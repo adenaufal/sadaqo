@@ -1,0 +1,143 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme inline {
+  --font-sans: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
+  --font-heading: "Plus Jakarta Sans", system-ui, sans-serif;
+
+  /* Islamic Emerald Green Primary */
+  --color-primary: oklch(0.45 0.16 160);
+  --color-primary-foreground: oklch(0.99 0 0);
+  --color-primary-dark: oklch(0.38 0.14 160);
+  --color-primary-light: oklch(0.60 0.17 160);
+
+  /* Warm Gold Accent */
+  --color-accent: oklch(0.72 0.12 80);
+  --color-accent-foreground: oklch(0.20 0.04 80);
+  --color-accent-dark: oklch(0.58 0.13 75);
+  --color-accent-light: oklch(0.88 0.06 85);
+
+  /* Backgrounds */
+  --color-background: oklch(0.98 0.005 85);
+  --color-foreground: oklch(0.20 0.02 260);
+  --color-card: oklch(1 0 0);
+  --color-card-foreground: oklch(0.20 0.02 260);
+  --color-popover: oklch(1 0 0);
+  --color-popover-foreground: oklch(0.20 0.02 260);
+
+  /* Secondary */
+  --color-secondary: oklch(0.95 0.01 160);
+  --color-secondary-foreground: oklch(0.30 0.10 160);
+
+  /* Muted */
+  --color-muted: oklch(0.96 0.005 85);
+  --color-muted-foreground: oklch(0.55 0.02 260);
+
+  /* Destructive */
+  --color-destructive: oklch(0.58 0.22 27);
+
+  /* Border/Input */
+  --color-border: oklch(0.90 0.01 85);
+  --color-input: oklch(0.90 0.01 85);
+  --color-ring: oklch(0.45 0.16 160);
+
+  /* Charts */
+  --color-chart-1: oklch(0.45 0.16 160);
+  --color-chart-2: oklch(0.72 0.12 80);
+  --color-chart-3: oklch(0.60 0.17 160);
+  --color-chart-4: oklch(0.58 0.13 75);
+  --color-chart-5: oklch(0.50 0.10 160);
+
+  /* Sidebar */
+  --color-sidebar: oklch(0.98 0.005 85);
+  --color-sidebar-foreground: oklch(0.20 0.02 260);
+  --color-sidebar-primary: oklch(0.45 0.16 160);
+  --color-sidebar-primary-foreground: oklch(0.99 0 0);
+  --color-sidebar-accent: oklch(0.94 0.02 160);
+  --color-sidebar-accent-foreground: oklch(0.30 0.10 160);
+  --color-sidebar-border: oklch(0.90 0.01 85);
+  --color-sidebar-ring: oklch(0.45 0.16 160);
+
+  /* Radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.625rem;
+  --radius-xl: 0.875rem;
+  --radius-2xl: 1.125rem;
+  --radius-3xl: 1.375rem;
+  --radius-4xl: 1.625rem;
+
+  /* Custom ZakatFlow tokens */
+  --color-emerald-glow: oklch(0.60 0.17 160 / 0.15);
+  --color-gold-glow: oklch(0.72 0.12 80 / 0.15);
+  --color-cream: oklch(0.98 0.005 85);
+  --color-success: oklch(0.55 0.18 155);
+  --color-warning: oklch(0.65 0.15 65);
+  --color-error: oklch(0.58 0.22 27);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    @apply scroll-smooth antialiased;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    @apply tracking-tight;
+  }
+}
+
+@layer utilities {
+  /* Islamic geometric pattern overlay */
+  .islamic-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30z' fill='none' stroke='%23047857' stroke-width='0.5' opacity='0.06'/%3E%3C/svg%3E");
+  }
+
+  /* Gradient backgrounds */
+  .gradient-emerald {
+    background: linear-gradient(135deg, oklch(0.45 0.16 160), oklch(0.38 0.14 160));
+  }
+
+  .gradient-gold {
+    background: linear-gradient(135deg, oklch(0.72 0.12 80), oklch(0.65 0.14 75));
+  }
+
+  .gradient-hero {
+    background: linear-gradient(
+      180deg,
+      oklch(0.98 0.005 85) 0%,
+      oklch(0.95 0.02 160 / 0.3) 50%,
+      oklch(0.98 0.005 85) 100%
+    );
+  }
+
+  /* Text gradient */
+  .text-gradient-emerald {
+    background: linear-gradient(135deg, oklch(0.45 0.16 160), oklch(0.60 0.17 160));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Glow effects */
+  .glow-emerald {
+    box-shadow: 0 0 20px oklch(0.60 0.17 160 / 0.2), 0 0 40px oklch(0.60 0.17 160 / 0.1);
+  }
+
+  .glow-gold {
+    box-shadow: 0 0 20px oklch(0.72 0.12 80 / 0.2), 0 0 40px oklch(0.72 0.12 80 / 0.1);
+  }
+
+  /* Safe area for mobile notch/home indicator */
+  .safe-area-bottom {
+    padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+  }
+}
