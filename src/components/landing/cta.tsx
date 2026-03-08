@@ -1,9 +1,16 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Moon } from 'lucide-react';
+import { ArrowRight, Moon, CheckCircle2 } from 'lucide-react';
 import Link from 'next/link';
 import { motion } from 'motion/react';
+
+const riskReversal = [
+  'Gratis selamanya untuk memulai',
+  'Tidak perlu kartu kredit',
+  'Dana donatur tidak pernah melalui kami — langsung ke rekening masjid',
+  'Mulai dengan kalkulator zakat tanpa perlu daftar',
+];
 
 export function CTA() {
   return (
@@ -24,10 +31,14 @@ export function CTA() {
             </div>
 
             <h2 className="text-3xl lg:text-4xl font-bold font-heading text-white mb-4">
-              Mulai Kampanye Ramadhan Anda Sekarang
+              Masjid Anda Layak Punya Sistem Donasi yang Amanah.
             </h2>
-            <p className="text-white/80 max-w-xl mx-auto mb-8 text-lg">
-              Gratis, mudah, dan transparan. Buat kampanye zakat masjid Anda dalam hitungan menit.
+            <p className="text-white/80 max-w-xl mx-auto mb-2 text-lg">
+              Bukan spreadsheet. Bukan grup WhatsApp. Platform yang membuktikan kepada jamaah
+              bahwa setiap rupiah dikelola dengan benar.
+            </p>
+            <p className="text-white/60 max-w-md mx-auto mb-8 text-sm">
+              Ramadhan datang sekali setahun. Kampanye zakat yang amanah bisa dimulai hari ini.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -37,7 +48,7 @@ export function CTA() {
                 className="bg-white text-primary hover:bg-white/90 h-12 px-8 text-base font-semibold shadow-lg"
               >
                 <Link href="/register">
-                  Daftar Gratis
+                  Daftar Gratis — Kampanye Pertama Jalan Hari Ini
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Link>
               </Button>
@@ -50,6 +61,15 @@ export function CTA() {
                 <Link href="/kalkulator-zakat">Coba Kalkulator Zakat</Link>
               </Button>
             </div>
+
+            <ul className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2">
+              {riskReversal.map((item) => (
+                <li key={item} className="flex items-center gap-1.5 text-white/70 text-xs">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-white/60 shrink-0" />
+                  {item}
+                </li>
+              ))}
+            </ul>
           </div>
         </motion.div>
       </div>

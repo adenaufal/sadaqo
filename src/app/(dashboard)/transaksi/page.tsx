@@ -9,6 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Receipt, Wallet, CheckCircle, Clock as ClockIcon } from 'lucide-react';
+import { BuktiZakatButton } from '@/components/dashboard/bukti-zakat-button';
 import { format } from 'date-fns';
 import { id as idLocale } from 'date-fns/locale/id';
 import type { Metadata } from 'next';
@@ -127,6 +128,7 @@ export default async function TransaksiPage() {
                     <TableHead>Jenis</TableHead>
                     <TableHead>Status</TableHead>
                     <TableHead>Tanggal</TableHead>
+                    <TableHead>Aksi</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -157,6 +159,18 @@ export default async function TransaksiPage() {
                           {d.created_at
                             ? format(new Date(d.created_at), 'dd MMM yyyy HH:mm', { locale: idLocale })
                             : '-'}
+                        </TableCell>
+                        <TableCell>
+                          {d.payment_status === 'paid' && (
+                            <BuktiZakatButton
+                              donorName={d.is_anonymous ? 'Hamba Allah' : d.donor_name}
+                              donorEmail={d.donor_email}
+                              donorPhone={d.donor_phone}
+                              amount={d.amount}
+                              donationType={d.donation_type}
+                              campaignTitle={campaignMap.get(d.campaign_id) || 'Kampanye'}
+                            />
+                          )}
                         </TableCell>
                       </TableRow>
                     );

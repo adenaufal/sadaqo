@@ -13,39 +13,39 @@ import {
 const features = [
   {
     icon: Megaphone,
-    title: 'Buat Kampanye dalam Hitungan Menit',
+    title: 'Tanpa Tim IT. Kampanye Siap dalam 5 Menit.',
     description:
-      'Buat kampanye zakat fitrah, zakat mal, infaq, sedekah, atau wakaf. Dapatkan halaman kampanye yang siap dibagikan langsung.',
+      'Pilih jenis donasi, tentukan target, dan kampanye masjid Anda langsung jadi. Tidak perlu developer, tidak perlu setup rumit.',
   },
   {
     icon: Calculator,
-    title: 'Kalkulator Zakat Terintegrasi',
+    title: 'Donatur Tidak Perlu Tanya "Berapa Zakat Saya?"',
     description:
-      'Kalkulator zakat fitrah, zakat mal, dan zakat profesi. Donatur langsung tahu berapa yang harus dibayar dan bisa langsung bayar.',
+      'Kalkulator zakat fitrah, mal, dan profesi terintegrasi langsung di halaman donasi. Donatur hitung, langsung bayar — di satu tempat.',
   },
   {
     icon: BarChart3,
-    title: 'Dashboard Real-time',
+    title: 'Jamaah Tidak Akan Tanya Progress Lagi',
     description:
-      'Pantau progres kampanye, jumlah donatur, dan total terkumpul secara real-time. Semua data terupdate otomatis.',
+      'Dashboard real-time yang bisa dilihat siapa saja. Setiap donasi masuk langsung terlihat — tanpa Anda perlu update manual apapun.',
   },
   {
     icon: Users,
-    title: 'Database Donatur (Muzakki)',
+    title: 'Rekap Donatur Otomatis — Tanpa Spreadsheet',
     description:
-      'Kelola data donatur secara otomatis. Lihat riwayat donasi, total kontribusi, dan kirim bukti zakat digital.',
+      'Semua data muzakki tersimpan rapi otomatis. Riwayat donasi, total kontribusi, dan bukti zakat digital — semuanya ada.',
   },
   {
     icon: Shield,
-    title: 'Transparansi Penuh',
+    title: 'Jamaah Bisa Buktikan Sendiri — Tanpa Anda Jelaskan',
     description:
-      'Halaman transparansi publik untuk setiap kampanye. Siapa saja bisa melihat progres dan daftar donatur secara real-time.',
+      'Setiap kampanye punya halaman transparansi publik. Siapa saja bisa cek progres dan daftar donatur — kepercayaan dibangun otomatis.',
   },
   {
     icon: Share2,
-    title: 'Bagikan via WhatsApp',
+    title: 'Satu Klik. Seluruh Jamaah Tahu.',
     description:
-      'Tombol berbagi WhatsApp dengan pesan yang sudah diformat. Satu klik untuk menyebarkan kampanye ke jamaah masjid.',
+      'Tombol berbagi WhatsApp dengan pesan yang sudah diformat rapi. Sebar kampanye ke grup masjid dalam hitungan detik.',
   },
 ];
 
@@ -61,11 +61,14 @@ export function Features() {
           >
             <p className="text-sm font-semibold text-primary mb-2">FITUR UNGGULAN</p>
             <h2 className="text-3xl lg:text-4xl font-bold font-heading">
-              Semua yang Anda Butuhkan untuk{' '}
-              <span className="text-gradient-emerald">Mengelola Donasi</span>
+              Satu Platform.{' '}
+              <span className="text-gradient-emerald">Tidak Ada Lagi Rekap Manual.</span>
             </h2>
             <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
-              Dari pembuatan kampanye hingga pelaporan transparan — semua dalam satu platform.
+              Dari grup WhatsApp ke kampanye zakat yang jamaah percaya — tanpa satu baris kode pun.
+            </p>
+            <p className="mt-2 text-sm font-medium text-primary/70">
+              Dibuat oleh Muslim, untuk pengurus masjid Indonesia.
             </p>
           </motion.div>
         </div>

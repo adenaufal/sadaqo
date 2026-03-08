@@ -1,7 +1,7 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import { Moon, ArrowRight, Calculator, BarChart3, Shield } from 'lucide-react';
+import { Moon, ArrowRight, Calculator, BarChart3, Shield, Clock } from 'lucide-react';
 import Link from 'next/link';
 import { motion } from 'motion/react';
 
@@ -25,7 +25,7 @@ export function Hero() {
           >
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
               <Moon className="w-4 h-4" />
-              <span>Ramadhan 1447H</span>
+              <span>Khusus Masjid &amp; Komunitas Muslim Indonesia</span>
             </div>
           </motion.div>
 
@@ -36,9 +36,8 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            Mudahkan Pengelolaan{' '}
-            <span className="text-gradient-emerald">Zakat & Donasi</span>{' '}
-            Masjid Anda
+            Jamaah Tanya Progress Donasi Terus?{' '}
+            <span className="text-gradient-emerald">Kini Mereka Bisa Cek Sendiri.</span>
           </motion.h1>
 
           {/* Description */}
@@ -48,8 +47,9 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            Platform paling mudah untuk masjid dan komunitas meluncurkan kampanye fundraising
-            Ramadhan yang transparan dengan kalkulator zakat bawaan dan pelacakan donasi real-time.
+            AmanahFlow beri masjid Anda halaman kampanye zakat profesional, kalkulator zakat bawaan,
+            dan transparansi publik yang bisa dicek jamaah kapan saja — siap dibagikan ke WhatsApp
+            dalam 5 menit. Gratis.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -61,14 +61,14 @@ export function Hero() {
           >
             <Button asChild size="lg" className="gradient-emerald text-white h-12 px-8 text-base shadow-lg hover:shadow-xl transition-shadow">
               <Link href="/register">
-                Mulai Sekarang
+                Buat Kampanye Pertama Saya
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Link>
             </Button>
             <Button asChild variant="outline" size="lg" className="h-12 px-8 text-base">
               <Link href="/kalkulator-zakat">
                 <Calculator className="w-4 h-4 mr-2" />
-                Hitung Zakat
+                Coba Kalkulator Zakat
               </Link>
             </Button>
           </motion.div>
@@ -81,9 +81,9 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.4 }}
           >
             {[
-              { icon: Shield, label: 'Transparan', desc: '100% terbuka' },
-              { icon: Calculator, label: 'Kalkulator', desc: '3 jenis zakat' },
-              { icon: BarChart3, label: 'Real-time', desc: 'Update langsung' },
+              { icon: Shield, label: '0 Ribet', desc: 'Tanpa developer' },
+              { icon: Clock, label: '5 Menit', desc: 'Kampanye siap bagikan' },
+              { icon: BarChart3, label: '100% Amanah', desc: 'Dana langsung ke masjid' },
             ].map((stat) => (
               <div key={stat.label} className="text-center">
                 <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 mb-2">

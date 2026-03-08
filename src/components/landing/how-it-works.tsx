@@ -8,25 +8,25 @@ const steps = [
     step: 1,
     icon: UserPlus,
     title: 'Daftar & Buat Akun',
-    description: 'Daftar gratis dalam 30 detik. Tidak perlu kartu kredit atau setup rumit.',
+    description: 'Selesai dalam 30 detik. Tidak perlu kartu kredit, tidak perlu approval panjang. Langsung masuk.',
   },
   {
     step: 2,
     icon: Megaphone,
     title: 'Buat Kampanye',
-    description: 'Pilih jenis donasi, tentukan target, dan kampanye langsung siap dibagikan.',
+    description: 'Pilih jenis donasi, tentukan target. Kampanye masjid Anda siap dibagikan dalam 5 menit.',
   },
   {
     step: 3,
     icon: CreditCard,
     title: 'Terima Donasi',
-    description: 'Donatur membayar via Mayar. Semua metode pembayaran didukung otomatis.',
+    description: 'Donatur bayar via Mayar — QRIS, transfer bank, GoPay, OVO, Dana. Semua masuk otomatis.',
   },
   {
     step: 4,
     icon: BarChart3,
-    title: 'Pantau Real-time',
-    description: 'Lihat progres, kelola donatur, dan bagikan transparansi ke publik.',
+    title: 'Pantau & Bagikan',
+    description: 'Lihat progres real-time, kelola database muzakki, dan bagikan transparansi ke publik kapan saja.',
   },
 ];
 
@@ -42,7 +42,8 @@ export function HowItWorks() {
           >
             <p className="text-sm font-semibold text-primary mb-2">CARA KERJA</p>
             <h2 className="text-3xl lg:text-4xl font-bold font-heading">
-              Mulai dalam <span className="text-gradient-emerald">4 Langkah Mudah</span>
+              Dari Nol ke Kampanye Aktif —{' '}
+              <span className="text-gradient-emerald">Lebih Cepat dari Rapat DKM</span>
             </h2>
             <p className="mt-4 text-muted-foreground max-w-2xl mx-auto">
               Tidak perlu keahlian teknis. Siapa saja bisa membuat kampanye donasi profesional.
@@ -78,6 +79,19 @@ export function HowItWorks() {
             </motion.div>
           ))}
         </div>
+
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-12 text-center text-sm text-muted-foreground"
+        >
+          Belum yakin? Mulai dari{' '}
+          <a href="/kalkulator-zakat" className="text-primary font-medium underline underline-offset-2">
+            kalkulator zakat dulu
+          </a>{' '}
+          — gratis, tanpa perlu daftar. Kalau berguna, kampanye Anda siap dalam 5 menit berikutnya.
+        </motion.p>
       </div>
     </section>
   );

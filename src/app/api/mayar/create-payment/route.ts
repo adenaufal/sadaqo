@@ -8,7 +8,8 @@ type Donation = Database['public']['Tables']['donations']['Row'];
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { campaignId, campaignSlug, donorName, donorEmail, donorPhone, amount, donationType, message, isAnonymous } = body;
+    const { campaignId, campaignSlug, donorName, donorEmail, donorPhone, amount, donationType, isAnonymous, message } = body;
+    const campaignTitle = body.campaignTitle || 'Kampanye AmanahFlow';
 
     if (!campaignId || !donorName || !amount) {
       return NextResponse.json({ error: 'Data tidak lengkap' }, { status: 400 });
@@ -23,7 +24,7 @@ export async function POST(req: NextRequest) {
         email: donorEmail || 'donatur@amanahflow.id',
         amount,
         mobile: donorPhone || '',
-        description: `Donasi ${donationType} - ${donorName}`,
+        description: campaignTitle,
         redirectUrl: `${appUrl}/transparansi/${campaignSlug}?donated=true`,
       });
     } catch (mayarErr: any) {

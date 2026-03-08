@@ -53,6 +53,7 @@ export function DonationForm({
         body: JSON.stringify({
           campaignId,
           campaignSlug,
+          campaignTitle,
           donorName: form.is_anonymous ? 'Hamba Allah' : form.donor_name,
           donorEmail: form.donor_email,
           donorPhone: form.donor_phone,
