@@ -47,8 +47,13 @@ export default async function KampanyePage() {
       {!campaigns || campaigns.length === 0 ? (
         <Card className="border-border/50">
           <CardContent className="py-16 text-center">
-            <Megaphone className="w-12 h-12 text-muted-foreground/30 mx-auto mb-4" />
-            <p className="text-muted-foreground mb-4">Belum ada kampanye</p>
+            <div className="w-16 h-16 rounded-2xl gradient-emerald flex items-center justify-center mx-auto mb-4">
+              <Megaphone className="w-8 h-8 text-white" />
+            </div>
+            <p className="font-semibold text-foreground/80 mb-1">Mulai kampanye pertama Anda 🌙</p>
+            <p className="text-sm text-muted-foreground mb-5 max-w-xs mx-auto">
+              5 menit setup. Seumur hidup transparansi. Jamaah Anda menunggu cara yang lebih mudah untuk berdonasi.
+            </p>
             <Button asChild className="gradient-emerald text-white">
               <Link href="/kampanye/buat">
                 <Plus className="w-4 h-4 mr-1" />

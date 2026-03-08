@@ -209,15 +209,15 @@ export function DonationForm({
 
           <Button
             type="submit"
-            className="w-full gradient-emerald text-white h-12 text-base font-semibold"
+            className="w-full gradient-emerald text-white h-12 text-base font-semibold group"
             disabled={loading || !form.amount}
           >
             {loading ? (
               <Loader2 className="w-5 h-5 mr-2 animate-spin" />
             ) : (
-              <Heart className="w-5 h-5 mr-2" />
+              <Heart className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform duration-150" />
             )}
-            {loading ? 'Memproses...' : `Donasi ${form.amount ? formatRupiah(Number(form.amount)) : ''}`}
+            {loading ? 'Menitipkan amanah Anda... 🤲' : `Donasi ${form.amount ? formatRupiah(Number(form.amount)) : ''}`}
           </Button>
         </form>
       </CardContent>

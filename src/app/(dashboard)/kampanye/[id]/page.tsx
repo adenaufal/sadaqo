@@ -12,8 +12,6 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import {
   ArrowLeft,
   ExternalLink,
-  Share2,
-  Copy,
   Wallet,
   Users,
   TrendingUp,
@@ -21,15 +19,19 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 import { ShareButton } from '@/components/donation/share-button';
+import { CampaignCreatedBanner } from '@/components/campaign/campaign-created-banner';
 import { format } from 'date-fns';
 import { id as idLocale } from 'date-fns/locale/id';
 
 export default async function CampaignDetailPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ id: string }>;
+  searchParams: Promise<{ created?: string }>;
 }) {
   const { id } = await params;
+  const { created } = await searchParams;
   const supabase = await createClient();
 
   const {
@@ -61,6 +63,14 @@ export default async function CampaignDetailPage({
 
   return (
     <div className="space-y-6">
+      {/* Success banner after campaign creation */}
+      {created === '1' && (
+        <CampaignCreatedBanner
+          campaignTitle={campaign.title}
+          campaignUrl={campaignUrl}
+        />
+      )}
+
       <div className="flex items-center gap-3">
         <Button asChild variant="ghost" size="icon">
           <Link href="/kampanye">

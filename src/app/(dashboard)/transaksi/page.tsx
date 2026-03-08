@@ -113,9 +113,14 @@ export default async function TransaksiPage() {
         </CardHeader>
         <CardContent>
           {donations.length === 0 ? (
-            <div className="text-center py-12">
-              <Receipt className="w-12 h-12 text-muted-foreground/30 mx-auto mb-4" />
-              <p className="text-muted-foreground">Belum ada transaksi</p>
+            <div className="text-center py-14">
+              <div className="w-16 h-16 rounded-2xl bg-primary/5 flex items-center justify-center mx-auto mb-4">
+                <Receipt className="w-8 h-8 text-primary/30" />
+              </div>
+              <p className="font-semibold text-foreground/70">Donasi pertama sedang dalam perjalanan 🌙</p>
+              <p className="text-sm text-muted-foreground mt-1 max-w-xs mx-auto">
+                Bagikan link kampanye ke jamaah — setiap transaksi akan muncul di sini secara real-time.
+              </p>
             </div>
           ) : (
             <div className="overflow-x-auto">

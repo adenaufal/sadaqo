@@ -10,6 +10,8 @@ import {
   Shield,
 } from 'lucide-react';
 
+const ease = [0.25, 1, 0.5, 1] as const;
+
 const features = [
   {
     icon: Megaphone,
@@ -58,6 +60,7 @@ export function Features() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.55, ease }}
           >
             <p className="text-sm font-semibold text-primary mb-2">FITUR UNGGULAN</p>
             <h2 className="text-3xl lg:text-4xl font-bold font-heading">
@@ -77,15 +80,20 @@ export function Features() {
           {features.map((feature, i) => (
             <motion.div
               key={feature.title}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="group relative p-6 rounded-2xl bg-card border border-border/50 hover:border-primary/20 hover:shadow-lg transition-all duration-300"
+              transition={{ delay: i * 0.08, duration: 0.5, ease }}
+              whileHover={{ y: -5, transition: { duration: 0.2, ease } }}
+              className="group relative p-6 rounded-2xl bg-card border border-border/50 hover:border-primary/20 hover:shadow-lg transition-shadow duration-300"
             >
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 group-hover:bg-primary/15 transition-colors mb-4">
+              <motion.div
+                className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 mb-4"
+                whileHover={{ scale: 1.1, backgroundColor: 'rgba(var(--primary) / 0.18)' }}
+                transition={{ duration: 0.2 }}
+              >
                 <feature.icon className="w-6 h-6 text-primary" />
-              </div>
+              </motion.div>
               <h3 className="font-semibold font-heading text-lg mb-2">{feature.title}</h3>
               <p className="text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
             </motion.div>

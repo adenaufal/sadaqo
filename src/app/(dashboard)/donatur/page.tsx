@@ -79,11 +79,15 @@ export default async function DonaturPage() {
         </CardHeader>
         <CardContent>
           {!donors || donors.length === 0 ? (
-            <div className="text-center py-12">
-              <Users className="w-12 h-12 text-muted-foreground/30 mx-auto mb-4" />
-              <p className="text-muted-foreground">Belum ada donatur</p>
-              <p className="text-xs text-muted-foreground mt-1">
-                Donatur akan otomatis tercatat saat ada donasi masuk
+            <div className="text-center py-14">
+              <div className="w-16 h-16 rounded-2xl bg-blue-50 dark:bg-blue-950/30 flex items-center justify-center mx-auto mb-4">
+                <Users className="w-8 h-8 text-blue-400/50" />
+              </div>
+              <p className="font-semibold text-foreground/70">
+                Donatur pertama akan jadi yang paling berkesan ✨
+              </p>
+              <p className="text-sm text-muted-foreground mt-1 max-w-xs mx-auto">
+                Setiap muzakki yang berdonasi otomatis tercatat di sini. Nama mereka tersimpan, pahala mereka terjaga.
               </p>
             </div>
           ) : (

@@ -81,8 +81,10 @@ export default function BuatKampanyePage() {
     if (error) {
       toast.error('Gagal membuat kampanye', { description: error.message });
     } else if (data) {
-      toast.success('Kampanye berhasil dibuat!');
-      router.push(`/kampanye/${data.id}`);
+      toast.success('Barakallahu fiikum! 🤲', {
+        description: 'Kampanye berhasil dibuat. Bagikan ke jamaah dan mulai terima donasi.',
+      });
+      router.push(`/kampanye/${data.id}?created=1`);
     }
 
     setLoading(false);

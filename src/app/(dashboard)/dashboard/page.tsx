@@ -8,6 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { StatCards } from '@/components/dashboard/stat-cards';
+import { OnboardingChecklist } from '@/components/dashboard/onboarding-checklist';
 import {
   Megaphone,
   ArrowRight,
@@ -39,15 +40,25 @@ export default async function DashboardPage() {
   const totalCollected = campaigns?.reduce((sum, c) => sum + (c.collected_amount || 0), 0) || 0;
   const totalDonors = campaigns?.reduce((sum, c) => sum + (c.donor_count || 0), 0) || 0;
   const activeCampaigns = campaigns?.filter((c) => c.is_active).length || 0;
-
   const avgDonation = totalDonors > 0 ? Math.round(totalCollected / totalDonors) : 0;
+
+  const isNewUser = !campaigns || campaigns.length === 0;
+  const displayName =
+    user.user_metadata?.organization_name ||
+    user.user_metadata?.full_name ||
+    user.email?.split('@')[0] ||
+    'Anda';
 
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold font-heading">Dashboard</h1>
-          <p className="text-muted-foreground text-sm">Selamat datang kembali!</p>
+          <p className="text-muted-foreground text-sm">
+            {isNewUser
+              ? `Selamat datang, ${displayName}!`
+              : `Selamat datang kembali, ${displayName}!`}
+          </p>
         </div>
         <Button asChild className="gradient-emerald text-white">
           <Link href="/kampanye/buat">
@@ -57,13 +68,20 @@ export default async function DashboardPage() {
         </Button>
       </div>
 
+      {/* Onboarding checklist for new users */}
+      {isNewUser && (
+        <OnboardingChecklist displayName={displayName} hasCampaign={false} />
+      )}
+
       {/* Stat Cards with count-up animation */}
-      <StatCards
-        totalCollected={totalCollected}
-        totalDonors={totalDonors}
-        activeCampaigns={activeCampaigns}
-        avgDonation={avgDonation}
-      />
+      {!isNewUser && (
+        <StatCards
+          totalCollected={totalCollected}
+          totalDonors={totalDonors}
+          activeCampaigns={activeCampaigns}
+          avgDonation={avgDonation}
+        />
+      )}
 
       {/* Campaign List */}
       <Card className="border-border/50">
@@ -77,10 +95,13 @@ export default async function DashboardPage() {
           </Button>
         </CardHeader>
         <CardContent>
-          {!campaigns || campaigns.length === 0 ? (
-            <div className="text-center py-12">
-              <Megaphone className="w-12 h-12 text-muted-foreground/30 mx-auto mb-4" />
-              <p className="text-muted-foreground mb-4">Belum ada kampanye</p>
+          {isNewUser ? (
+            <div className="text-center py-10">
+              <Megaphone className="w-12 h-12 text-muted-foreground/20 mx-auto mb-4" />
+              <p className="font-medium mb-1">Kampanye Anda akan muncul di sini</p>
+              <p className="text-sm text-muted-foreground mb-5 max-w-xs mx-auto">
+                Buat kampanye pertama dalam hitungan menit dan langsung bagikan ke jamaah via WhatsApp.
+              </p>
               <Button asChild className="gradient-emerald text-white">
                 <Link href="/kampanye/buat">
                   <Plus className="w-4 h-4 mr-1" />
@@ -90,7 +111,7 @@ export default async function DashboardPage() {
             </div>
           ) : (
             <div className="space-y-4">
-              {campaigns.slice(0, 5).map((campaign) => {
+              {campaigns!.slice(0, 5).map((campaign) => {
                 const progress = campaign.target_amount > 0
                   ? Math.min(Math.round(((campaign.collected_amount || 0) / campaign.target_amount) * 100), 100)
                   : 0;
@@ -112,7 +133,6 @@ export default async function DashboardPage() {
                         <span>{formatRupiah(campaign.collected_amount || 0)} / {formatRupiah(campaign.target_amount)}</span>
                         <span>{campaign.donor_count || 0} donatur</span>
                       </div>
-                      {/* Progress bar */}
                       <div className="mt-2 h-1.5 bg-muted rounded-full overflow-hidden">
                         <div
                           className="h-full gradient-emerald rounded-full transition-all duration-500"

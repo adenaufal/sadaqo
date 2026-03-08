@@ -3,6 +3,21 @@
 import { motion } from 'motion/react';
 import { XCircle, CheckCircle2 } from 'lucide-react';
 
+const ease = [0.25, 1, 0.5, 1] as const;
+
+const listContainer = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.07, delayChildren: 0.25 } },
+};
+const listItemVariant = {
+  hidden: { opacity: 0, x: -8 },
+  show: { opacity: 1, x: 0, transition: { duration: 0.35, ease } },
+};
+const listItemVariantRight = {
+  hidden: { opacity: 0, x: 8 },
+  show: { opacity: 1, x: 0, transition: { duration: 0.35, ease } },
+};
+
 const before = [
   'Grup WhatsApp kebanjiran "sudah transfer pak"',
   'Spreadsheet diupdate manual setiap ada donasi masuk',
@@ -27,6 +42,7 @@ export function BeforeAfter() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.55, ease }}
           className="text-center mb-12"
         >
           <p className="text-sm font-semibold text-primary mb-2 uppercase tracking-wider">
@@ -47,6 +63,7 @@ export function BeforeAfter() {
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.55, ease }}
             className="rounded-2xl bg-card border border-border p-8"
           >
             <div className="flex items-center gap-3 mb-6">
@@ -58,14 +75,20 @@ export function BeforeAfter() {
                 <p className="text-xs text-muted-foreground">Setiap Ramadhan yang berlalu</p>
               </div>
             </div>
-            <ul className="space-y-4">
+            <motion.ul
+              className="space-y-4"
+              variants={listContainer}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+            >
               {before.map((item) => (
-                <li key={item} className="flex items-start gap-3">
+                <motion.li key={item} variants={listItemVariant} className="flex items-start gap-3">
                   <XCircle className="w-4 h-4 text-destructive/50 mt-0.5 shrink-0" />
                   <span className="text-sm text-muted-foreground leading-relaxed">{item}</span>
-                </li>
+                </motion.li>
               ))}
-            </ul>
+            </motion.ul>
           </motion.div>
 
           {/* SESUDAH */}
@@ -73,7 +96,7 @@ export function BeforeAfter() {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
+            transition={{ delay: 0.1, duration: 0.55, ease }}
             className="rounded-2xl bg-primary/5 border border-primary/20 p-8"
           >
             <div className="flex items-center gap-3 mb-6">
@@ -85,14 +108,20 @@ export function BeforeAfter() {
                 <p className="text-xs text-muted-foreground">Mulai Ramadhan ini</p>
               </div>
             </div>
-            <ul className="space-y-4">
+            <motion.ul
+              className="space-y-4"
+              variants={listContainer}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+            >
               {after.map((item) => (
-                <li key={item} className="flex items-start gap-3">
+                <motion.li key={item} variants={listItemVariantRight} className="flex items-start gap-3">
                   <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 shrink-0" />
                   <span className="text-sm leading-relaxed">{item}</span>
-                </li>
+                </motion.li>
               ))}
-            </ul>
+            </motion.ul>
           </motion.div>
         </div>
       </div>

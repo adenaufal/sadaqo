@@ -22,14 +22,26 @@ export async function POST(req: NextRequest) {
       redirectUrl: appUrl,
     });
 
-    return NextResponse.json({
-      invoiceUrl: response.data.link,
-      invoiceId: response.data.id,
-    });
+    console.log('[create-invoice] Mayar response:', JSON.stringify(response, null, 2));
+
+    // Handle different possible field names from Mayar API
+    const invoiceUrl = response?.data?.link || response?.data?.paymentUrl || response?.data?.url;
+    const invoiceId = response?.data?.id;
+
+    if (!invoiceUrl) {
+      console.error('[create-invoice] No invoice URL in response:', response);
+      return NextResponse.json(
+        { error: 'Invoice berhasil dibuat tapi URL tidak tersedia' },
+        { status: 500 }
+      );
+    }
+
+    return NextResponse.json({ invoiceUrl, invoiceId });
   } catch (error) {
-    console.error('Create invoice error:', error);
+    const msg = error instanceof Error ? error.message : String(error);
+    console.error('[create-invoice] Error:', msg);
     return NextResponse.json(
-      { error: 'Gagal membuat bukti pembayaran' },
+      { error: msg || 'Gagal membuat bukti pembayaran' },
       { status: 500 }
     );
   }

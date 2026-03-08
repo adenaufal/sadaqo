@@ -49,6 +49,7 @@ export function BuktiZakatButton({
 
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Gagal membuat bukti');
+      if (!data.invoiceUrl) throw new Error('URL invoice tidak tersedia dari Mayar');
 
       toast.success('Bukti zakat berhasil dibuat!', {
         description: 'Klik tombol di bawah untuk membuka invoice.',

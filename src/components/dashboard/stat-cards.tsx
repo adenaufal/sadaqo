@@ -1,9 +1,12 @@
 'use client';
 
+import { motion } from 'motion/react';
 import { Card, CardContent } from '@/components/ui/card';
 import { CountUp } from '@/components/ui/count-up';
 import { formatRupiah, formatNumber } from '@/lib/utils';
 import { Wallet, Users, Megaphone, TrendingUp, type LucideIcon } from 'lucide-react';
+
+const ease = [0.25, 1, 0.5, 1] as const;
 
 interface StatCardsProps {
   totalCollected: number;
@@ -49,24 +52,31 @@ export function StatCards({ totalCollected, totalDonors, activeCampaigns, avgDon
 
   return (
     <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-      {stats.map((stat) => {
+      {stats.map((stat, i) => {
         const { icon: Icon, color, bgColor } = iconMap[stat.key];
         return (
-          <Card key={stat.key} className="border-border/50">
-            <CardContent className="pt-6">
-              <div className="flex items-center gap-3">
-                <div className={`w-10 h-10 rounded-xl ${bgColor} flex items-center justify-center`}>
-                  <Icon className={`w-5 h-5 ${color}`} />
+          <motion.div
+            key={stat.key}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45, delay: i * 0.07, ease }}
+          >
+            <Card className="border-border/50 h-full">
+              <CardContent className="pt-6">
+                <div className="flex items-center gap-3">
+                  <div className={`w-10 h-10 rounded-xl ${bgColor} flex items-center justify-center`}>
+                    <Icon className={`w-5 h-5 ${color}`} />
+                  </div>
+                  <div>
+                    <p className="text-xs text-muted-foreground">{stat.label}</p>
+                    <p className="text-lg font-bold font-heading">
+                      <CountUp end={stat.rawValue} formatter={stat.formatter} />
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <p className="text-xs text-muted-foreground">{stat.label}</p>
-                  <p className="text-lg font-bold font-heading">
-                    <CountUp end={stat.rawValue} formatter={stat.formatter} />
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
+          </motion.div>
         );
       })}
     </div>
