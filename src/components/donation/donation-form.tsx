@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { CurrencyInput } from '@/components/ui/currency-input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -114,15 +115,13 @@ export function DonationForm({
           {/* Custom Amount */}
           <div className="space-y-2">
             <Label htmlFor="amount">Nominal Donasi (Rp) *</Label>
-            <Input
+            <CurrencyInput
               id="amount"
-              type="number"
-              min={1000}
+              value={Number(form.amount) || 0}
+              onChange={(val) => setForm({ ...form, amount: val.toString() })}
               placeholder="Masukkan nominal"
-              value={form.amount}
-              onChange={(e) => setForm({ ...form, amount: e.target.value })}
-              required
               className="h-11 text-lg font-bold"
+              required
             />
           </div>
 

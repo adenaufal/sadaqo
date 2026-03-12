@@ -2,6 +2,7 @@
 
 import { motion } from 'motion/react';
 import { CreditCard, Shield, Zap } from 'lucide-react';
+import Image from 'next/image';
 
 export function MayarBadge() {
   return (
@@ -41,6 +42,15 @@ export function MayarBadge() {
             <div className="flex items-center gap-1.5">
               <CreditCard className="w-3.5 h-3.5 text-primary" />
               <span>QRIS, Transfer, E-Wallet</span>
+            </div>
+          </div>
+
+          <div className="mt-8 pt-6 border-t border-border/30">
+            <p className="text-xs text-muted-foreground text-center mb-4">Dibangun dengan</p>
+            <div className="flex items-center justify-center gap-6">
+              <Image src="/logo/next-js.svg" alt="Next.js" width={80} height={20} className="opacity-60 dark:invert" />
+              <span className="text-border/60 text-sm">×</span>
+              <Image src="/logo/mayar.svg" alt="Mayar" width={72} height={24} className="opacity-60" />
             </div>
           </div>
         </motion.div>

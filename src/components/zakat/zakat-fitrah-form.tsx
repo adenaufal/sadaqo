@@ -9,6 +9,7 @@ import { hitungZakatFitrah, ZAKAT_CONSTANTS } from '@/lib/zakat';
 import { formatRupiah } from '@/lib/utils';
 import { motion, AnimatePresence } from 'motion/react';
 import { Users, Wheat, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { CurrencyInput } from '@/components/ui/currency-input';
 
 interface ZakatFitrahFormProps {
   onCalculate?: (amount: number, type: string) => void;
@@ -52,12 +53,10 @@ export function ZakatFitrahForm({ onCalculate, showPayButton }: ZakatFitrahFormP
             <Wheat className="w-4 h-4 text-primary" />
             Harga Beras per Kg (Rp)
           </Label>
-          <Input
+          <CurrencyInput
             id="hargaBeras"
-            type="number"
-            min={0}
             value={hargaBeras}
-            onChange={(e) => setHargaBeras(Number(e.target.value))}
+            onChange={setHargaBeras}
             className="h-11"
             placeholder="18000"
           />

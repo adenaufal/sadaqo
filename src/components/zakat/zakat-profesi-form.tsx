@@ -9,6 +9,7 @@ import { hitungZakatProfesi, ZAKAT_CONSTANTS } from '@/lib/zakat';
 import { formatRupiah } from '@/lib/utils';
 import { motion, AnimatePresence } from 'motion/react';
 import { Briefcase, ArrowRight, CheckCircle2, AlertCircle } from 'lucide-react';
+import { CurrencyInput } from '@/components/ui/currency-input';
 
 interface ZakatProfesiFormProps {
   onCalculate?: (amount: number, type: string) => void;
@@ -36,12 +37,10 @@ export function ZakatProfesiForm({ onCalculate, showPayButton }: ZakatProfesiFor
             <Briefcase className="w-4 h-4 text-primary" />
             Penghasilan Bulanan (Rp)
           </Label>
-          <Input
+          <CurrencyInput
             id="penghasilan"
-            type="number"
-            min={0}
-            value={penghasilan || ''}
-            onChange={(e) => setPenghasilan(Number(e.target.value))}
+            value={penghasilan}
+            onChange={setPenghasilan}
             className="h-11"
             placeholder="Contoh: 10000000"
           />
@@ -49,12 +48,10 @@ export function ZakatProfesiForm({ onCalculate, showPayButton }: ZakatProfesiFor
 
         <div className="space-y-2">
           <Label htmlFor="hargaEmasProfesi">Harga Emas per Gram (Rp)</Label>
-          <Input
+          <CurrencyInput
             id="hargaEmasProfesi"
-            type="number"
-            min={0}
             value={hargaEmas}
-            onChange={(e) => setHargaEmas(Number(e.target.value))}
+            onChange={setHargaEmas}
             className="h-11"
           />
           <p className="text-xs text-muted-foreground">

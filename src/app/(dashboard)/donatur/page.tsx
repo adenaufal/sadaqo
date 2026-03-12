@@ -22,10 +22,10 @@ export default async function DonaturPage() {
   if (!user) redirect('/login');
 
   // Get campaign IDs belonging to this user
-  const { data: campaigns } = await supabase
+  const { data: campaigns } = await (supabase as any)
     .from('campaigns')
     .select('id')
-    .eq('user_id', user.id);
+    .eq('user_id', user.id) as { data: { id: string }[] | null };
 
   const campaignIds = campaigns?.map((c) => c.id) ?? [];
 

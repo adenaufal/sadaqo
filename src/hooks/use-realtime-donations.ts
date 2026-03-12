@@ -13,17 +13,21 @@ export function useRealtimeDonations(campaignId: string) {
     const supabase = createClient();
 
     // Initial fetch
-    (supabase
-      .from('donations')
-      .select('*')
-      .eq('campaign_id', campaignId)
-      .eq('payment_status', 'paid')
-      .order('paid_at', { ascending: false })
-      .limit(50) as unknown as Promise<{ data: Donation[] | null }>)
-      .then(({ data }) => {
-        setDonations(data || []);
-        setLoading(false);
-      });
+    const fetchDonations = async () => {
+      const { data } = (await (supabase
+        .from('donations')
+        .select('*')
+        .eq('campaign_id', campaignId)
+        .eq('payment_status', 'paid')
+        .order('paid_at', { ascending: false })
+        .limit(50) as unknown as Promise<{ data: Donation[] | null })));
+      if (data) setDonations(data);
+    };
+
+    fetchDonations().then(() => setLoading(false));
+
+    // Polling fallback every 10 seconds
+    const pollInterval = setInterval(fetchDonations, 10_000);
 
     // Real-time subscription
     const channel = supabase
@@ -54,6 +58,7 @@ export function useRealtimeDonations(campaignId: string) {
       .subscribe();
 
     return () => {
+      clearInterval(pollInterval);
       supabase.removeChannel(channel);
     };
   }, [campaignId]);

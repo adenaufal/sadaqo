@@ -9,6 +9,7 @@ import { hitungZakatMal, ZAKAT_CONSTANTS } from '@/lib/zakat';
 import { formatRupiah } from '@/lib/utils';
 import { motion, AnimatePresence } from 'motion/react';
 import { Wallet, Landmark, ArrowRight, CheckCircle2, AlertCircle } from 'lucide-react';
+import { CurrencyInput } from '@/components/ui/currency-input';
 
 interface ZakatMalFormProps {
   onCalculate?: (amount: number, type: string) => void;
@@ -38,12 +39,10 @@ export function ZakatMalForm({ onCalculate, showPayButton }: ZakatMalFormProps) 
             <Wallet className="w-4 h-4 text-primary" />
             Total Harta (Tabungan + Investasi + Emas + Properti)
           </Label>
-          <Input
+          <CurrencyInput
             id="totalHarta"
-            type="number"
-            min={0}
-            value={totalHarta || ''}
-            onChange={(e) => setTotalHarta(Number(e.target.value))}
+            value={totalHarta}
+            onChange={setTotalHarta}
             className="h-11"
             placeholder="Contoh: 200000000"
           />
@@ -54,12 +53,10 @@ export function ZakatMalForm({ onCalculate, showPayButton }: ZakatMalFormProps) 
             <Landmark className="w-4 h-4 text-primary" />
             Total Utang / Kewajiban
           </Label>
-          <Input
+          <CurrencyInput
             id="totalUtang"
-            type="number"
-            min={0}
-            value={totalUtang || ''}
-            onChange={(e) => setTotalUtang(Number(e.target.value))}
+            value={totalUtang}
+            onChange={setTotalUtang}
             className="h-11"
             placeholder="Contoh: 50000000"
           />
@@ -67,12 +64,10 @@ export function ZakatMalForm({ onCalculate, showPayButton }: ZakatMalFormProps) 
 
         <div className="space-y-2">
           <Label htmlFor="hargaEmas">Harga Emas per Gram (Rp)</Label>
-          <Input
+          <CurrencyInput
             id="hargaEmas"
-            type="number"
-            min={0}
             value={hargaEmas}
-            onChange={(e) => setHargaEmas(Number(e.target.value))}
+            onChange={setHargaEmas}
             className="h-11"
           />
           <p className="text-xs text-muted-foreground">
