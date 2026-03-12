@@ -14,13 +14,13 @@ export function useRealtimeDonations(campaignId: string) {
 
     // Initial fetch
     const fetchDonations = async () => {
-      const { data } = (await (supabase
+      const { data } = await (supabase
         .from('donations')
         .select('*')
         .eq('campaign_id', campaignId)
         .eq('payment_status', 'paid')
         .order('paid_at', { ascending: false })
-        .limit(50) as unknown as Promise<{ data: Donation[] | null })));
+        .limit(50) as unknown as Promise<{ data: Donation[] | null }>);
       if (data) setDonations(data);
     };
 

@@ -36,6 +36,10 @@ export const metadata: Metadata = {
     'sedekah',
   ],
   authors: [{ name: 'Sadaqo' }],
+  icons: {
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+  },
   openGraph: {
     type: 'website',
     locale: 'id_ID',
@@ -43,6 +47,11 @@ export const metadata: Metadata = {
     title: 'Sadaqo — Kampanye Donasi Masjid dalam 5 Menit',
     description:
       'Platform donasi masjid untuk pengurus DKM Indonesia. Kampanye siap bagikan ke WhatsApp dalam 5 menit, tanpa developer.',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Sadaqo — Kampanye Donasi Masjid dalam 5 Menit',
+    description: 'Platform donasi masjid untuk pengurus DKM Indonesia. Gratis untuk mulai.',
   },
 };
 
