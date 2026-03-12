@@ -9,7 +9,7 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
     const { campaignId, campaignSlug, donorName, donorEmail, donorPhone, amount, donationType, isAnonymous, message } = body;
-    const campaignTitle = body.campaignTitle || 'Kampanye AmanahFlow';
+    const campaignTitle = body.campaignTitle || 'Kampanye Sadaqo';
 
     if (!campaignId || !donorName || !amount) {
       return NextResponse.json({ error: 'Data tidak lengkap' }, { status: 400 });
@@ -21,7 +21,7 @@ export async function POST(req: NextRequest) {
     try {
       mayarResponse = await createPaymentLink({
         name: donorName,
-        email: donorEmail || 'donatur@amanahflow.id',
+        email: donorEmail || 'donatur@sadaqo.id',
         amount,
         mobile: donorPhone || '',
         description: campaignTitle,

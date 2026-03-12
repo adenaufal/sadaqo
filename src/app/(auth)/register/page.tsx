@@ -50,7 +50,7 @@ export default function RegisterPage() {
             <div className="w-10 h-10 rounded-xl gradient-emerald flex items-center justify-center">
               <Moon className="w-5 h-5 text-white" />
             </div>
-            <span className="text-2xl font-bold font-heading text-gradient-emerald">AmanahFlow</span>
+            <span className="text-2xl font-bold font-heading text-gradient-emerald">Sadaqo</span>
           </Link>
         </div>
 

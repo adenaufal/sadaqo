@@ -38,7 +38,7 @@ export async function GET(
               fontWeight: 700,
             }}
           >
-            AmanahFlow
+            Sadaqo
           </div>
         ),
         { width: 1200, height: 630 }
@@ -121,7 +121,7 @@ export async function GET(
               <span>Target: {formatRupiah(campaign.target_amount)}</span>
               <span>{campaign.donor_count || 0} donatur</span>
             </div>
-            <div style={{ fontSize: '28px', fontWeight: 700 }}>AmanahFlow</div>
+            <div style={{ fontSize: '28px', fontWeight: 700 }}>Sadaqo</div>
           </div>
         </div>
       ),
@@ -143,7 +143,7 @@ export async function GET(
             fontWeight: 700,
           }}
         >
-          AmanahFlow
+          Sadaqo
         </div>
       ),
       { width: 1200, height: 630 }

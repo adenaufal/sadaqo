@@ -18,11 +18,11 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: 'AmanahFlow — Mudahkan Pengelolaan Zakat & Donasi',
-    template: '%s | AmanahFlow',
+    default: 'Sadaqo — Kampanye Donasi Masjid dalam 5 Menit',
+    template: '%s | Sadaqo',
   },
   description:
-    'Platform paling mudah untuk masjid dan komunitas meluncurkan kampanye fundraising Ramadhan yang transparan dengan kalkulator zakat dan Mayar payment tracking.',
+    'Platform donasi masjid untuk pengurus DKM Indonesia. Buat kampanye zakat dan donasi siap dibagikan ke WhatsApp dalam 5 menit. Kalkulator zakat gratis, tanpa developer.',
   keywords: [
     'zakat',
     'donasi',
@@ -35,14 +35,14 @@ export const metadata: Metadata = {
     'infaq',
     'sedekah',
   ],
-  authors: [{ name: 'AmanahFlow' }],
+  authors: [{ name: 'Sadaqo' }],
   openGraph: {
     type: 'website',
     locale: 'id_ID',
-    siteName: 'AmanahFlow',
-    title: 'AmanahFlow — Mudahkan Pengelolaan Zakat & Donasi',
+    siteName: 'Sadaqo',
+    title: 'Sadaqo — Kampanye Donasi Masjid dalam 5 Menit',
     description:
-      'Platform paling mudah untuk masjid dan komunitas meluncurkan kampanye fundraising Ramadhan yang transparan.',
+      'Platform donasi masjid untuk pengurus DKM Indonesia. Kampanye siap bagikan ke WhatsApp dalam 5 menit, tanpa developer.',
   },
 };
 

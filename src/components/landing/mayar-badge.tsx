@@ -26,7 +26,7 @@ export function MayarBadge() {
           </div>
 
           <p className="mt-4 text-xs text-muted-foreground max-w-sm mx-auto">
-            AmanahFlow tidak pernah menyentuh uang donatur Anda. Dana langsung masuk ke rekening masjid.
+            Setiap transaksi diproses oleh Mayar dan tercatat publik — donatur dapat memverifikasi setiap donasi kapan saja.
           </p>
 
           <div className="mt-6 flex flex-wrap items-center justify-center gap-6 text-xs text-muted-foreground">

@@ -71,7 +71,7 @@ export function BeforeAfter() {
                 <XCircle className="w-5 h-5 text-destructive" />
               </div>
               <div>
-                <p className="font-bold font-heading text-base">Tanpa AmanahFlow</p>
+                <p className="font-bold font-heading text-base">Tanpa Sadaqo</p>
                 <p className="text-xs text-muted-foreground">Setiap Ramadhan yang berlalu</p>
               </div>
             </div>
@@ -104,7 +104,7 @@ export function BeforeAfter() {
                 <CheckCircle2 className="w-5 h-5 text-primary" />
               </div>
               <div>
-                <p className="font-bold font-heading text-base">Dengan AmanahFlow</p>
+                <p className="font-bold font-heading text-base">Dengan Sadaqo</p>
                 <p className="text-xs text-muted-foreground">Mulai Ramadhan ini</p>
               </div>
             </div>

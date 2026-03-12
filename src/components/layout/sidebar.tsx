@@ -59,7 +59,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
             <div className="w-8 h-8 rounded-lg gradient-emerald flex items-center justify-center">
               <Moon className="w-4 h-4 text-white" />
             </div>
-            <span className="font-bold font-heading text-gradient-emerald">AmanahFlow</span>
+            <span className="font-bold font-heading text-gradient-emerald">Sadaqo</span>
           </Link>
           <Button variant="ghost" size="icon" className="lg:hidden" onClick={onClose}>
             <X className="w-5 h-5" />

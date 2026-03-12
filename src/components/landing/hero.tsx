@@ -96,7 +96,7 @@ export function Hero() {
             {[
               { icon: Shield, label: '0 Ribet', desc: 'Tanpa developer' },
               { icon: Clock, label: '5 Menit', desc: 'Kampanye siap bagikan' },
-              { icon: BarChart3, label: '100% Amanah', desc: 'Dana langsung ke masjid' },
+              { icon: BarChart3, label: '100% Tercatat', desc: 'Publik & bisa diaudit' },
             ].map((stat) => (
               <motion.div key={stat.label} variants={statItem} className="text-center">
                 <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 mb-2">

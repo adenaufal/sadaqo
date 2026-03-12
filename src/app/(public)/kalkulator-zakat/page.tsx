@@ -21,7 +21,7 @@ export default function KalkulatorZakatPage() {
             <div className="w-8 h-8 rounded-lg gradient-emerald flex items-center justify-center">
               <Moon className="w-4 h-4 text-white" />
             </div>
-            <span className="font-bold font-heading text-gradient-emerald">AmanahFlow</span>
+            <span className="font-bold font-heading text-gradient-emerald">Sadaqo</span>
           </Link>
           <Button asChild variant="ghost" size="sm">
             <Link href="/">

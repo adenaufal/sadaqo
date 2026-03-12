@@ -1,6 +1,6 @@
-export const APP_NAME = 'AmanahFlow';
+export const APP_NAME = 'Sadaqo';
 export const APP_DESCRIPTION =
-  'Platform paling mudah untuk masjid dan komunitas meluncurkan kampanye fundraising Ramadhan yang transparan.';
+  'Kampanye donasi masjid siap bagikan ke WhatsApp dalam 5 menit. Tanpa developer, tanpa setup. Gratis untuk memulai.';
 
 export const CAMPAIGN_TYPES = [
   { value: 'zakat_fitrah', label: 'Zakat Fitrah' },

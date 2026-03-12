@@ -17,9 +17,9 @@ const listItem = {
 };
 
 const riskReversal = [
-  'Gratis selamanya untuk memulai',
+  'Gratis untuk memulai',
   'Tidak perlu kartu kredit',
-  'Dana donatur tidak pernah melalui kami — langsung ke rekening masjid',
+  'Setiap transaksi tercatat publik — donatur bisa audit kapan saja',
   'Mulai dengan kalkulator zakat tanpa perlu daftar',
 ];
 
@@ -48,7 +48,7 @@ export function CTA() {
             </motion.div>
 
             <h2 className="text-3xl lg:text-4xl font-bold font-heading text-white mb-4">
-              Masjid Anda Layak Punya Sistem Donasi yang Amanah.
+              Masjid Anda Layak Punya Kampanye Donasi yang Sahih.
             </h2>
             <p className="text-white/80 max-w-xl mx-auto mb-8 text-lg">
               Bukan spreadsheet. Bukan grup WhatsApp. Platform yang membuktikan bahwa setiap rupiah dikelola dengan benar.

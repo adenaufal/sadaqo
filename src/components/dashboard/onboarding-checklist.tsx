@@ -23,7 +23,7 @@ interface OnboardingChecklistProps {
 
 export function OnboardingChecklist({ displayName, hasCampaign }: OnboardingChecklistProps) {
   const steps = [
-    { label: 'Buat akun AmanahFlow', done: true },
+    { label: 'Buat akun Sadaqo', done: true },
     { label: 'Buat kampanye pertama Anda', done: hasCampaign },
     { label: 'Bagikan link kampanye ke jamaah via WhatsApp', done: false },
   ];
