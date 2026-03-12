@@ -19,7 +19,8 @@ const listItem = {
 const riskReversal = [
   'Gratis untuk memulai',
   'Tidak perlu kartu kredit',
-  'Setiap transaksi tercatat publik — donatur bisa audit kapan saja',
+  'Setiap transaksi tercatat publik',
+  'Donatur bisa audit kapan saja',
   'Mulai dengan kalkulator zakat tanpa perlu daftar',
 ];
 
@@ -62,7 +63,7 @@ export function CTA() {
                   className="bg-white text-primary hover:bg-white/90 h-12 px-8 text-base font-semibold shadow-lg"
                 >
                   <Link href="/register">
-                    Daftar Gratis — Mulai Hari Ini
+                    Mulai Sekarang, Gratis
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </Link>
                 </Button>

@@ -41,8 +41,9 @@ export function Footer() {
           <div>
             <h4 className="font-semibold text-sm mb-3">Lainnya</h4>
             <ul className="space-y-2 text-sm text-muted-foreground">
+              <li><Link href="/artikel/panduan-zakat-fitrah" className="hover:text-primary transition-colors">Panduan Zakat Fitrah</Link></li>
+              <li><Link href="/artikel/transparansi-donasi-masjid" className="hover:text-primary transition-colors">Transparansi Donasi</Link></li>
               <li><span>Powered by Mayar</span></li>
-              <li><span>Built with Next.js</span></li>
             </ul>
           </div>
         </div>

@@ -1,7 +1,7 @@
 import { ZakatCalculator } from '@/components/zakat/zakat-calculator';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Footer } from '@/components/layout/footer';
-import { Moon, ArrowLeft } from 'lucide-react';
+import { Moon, ArrowLeft, Wheat, Coins, Briefcase } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import type { Metadata } from 'next';
@@ -59,18 +59,24 @@ export default function KalkulatorZakatPage() {
             {
               title: 'Zakat Fitrah',
               desc: '2.5 kg beras per orang. Wajib sebelum Idul Fitri.',
+              icon: Wheat,
             },
             {
               title: 'Zakat Mal',
               desc: '2.5% dari harta di atas nisab (85 gram emas).',
+              icon: Coins,
             },
             {
               title: 'Zakat Profesi',
               desc: '2.5% dari penghasilan bulanan di atas nisab.',
+              icon: Briefcase,
             },
           ].map((info) => (
             <Card key={info.title} className="border-border/50">
               <CardContent className="pt-6">
+                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-3">
+                  <info.icon className="w-5 h-5 text-primary" />
+                </div>
                 <h3 className="font-semibold text-sm mb-1">{info.title}</h3>
                 <p className="text-xs text-muted-foreground">{info.desc}</p>
               </CardContent>

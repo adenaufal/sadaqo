@@ -1,14 +1,10 @@
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import { formatRupiah } from '@/lib/utils';
-import type { Database } from '@/types/database';
-
-type Donor = Database['public']['Tables']['donors']['Row'];
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { Users, Search } from 'lucide-react';
-import { Input } from '@/components/ui/input';
+import { Users } from 'lucide-react';
 import { format } from 'date-fns';
 import { id as idLocale } from 'date-fns/locale/id';
 import type { Metadata } from 'next';
@@ -25,15 +21,56 @@ export default async function DonaturPage() {
 
   if (!user) redirect('/login');
 
-  // Fetch donors for this user
-  const { data: donors } = await supabase
-    .from('donors')
-    .select('*')
-    .eq('user_id', user.id)
-    .order('total_donated', { ascending: false }) as { data: Donor[] | null };
+  // Get campaign IDs belonging to this user
+  const { data: campaigns } = await supabase
+    .from('campaigns')
+    .select('id')
+    .eq('user_id', user.id);
 
-  const totalDonors = donors?.length || 0;
-  const totalDonated = donors?.reduce((sum, d) => sum + (d.total_donated || 0), 0) || 0;
+  const campaignIds = campaigns?.map((c) => c.id) ?? [];
+
+  // Fetch paid donations grouped by donor identity
+  const { data: donations } = await (supabase
+    .from('donations') as any)
+    .select('donor_name, donor_email, donor_phone, amount, paid_at')
+    .in('campaign_id', campaignIds.length > 0 ? campaignIds : ['00000000-0000-0000-0000-000000000000'])
+    .eq('payment_status', 'paid')
+    .order('paid_at', { ascending: false }) as { data: { donor_name: string; donor_email: string | null; donor_phone: string | null; amount: number; paid_at: string | null }[] | null };
+
+  // Aggregate by donor identity (name + email combination)
+  const donorMap = new Map<string, {
+    name: string;
+    email: string | null;
+    phone: string | null;
+    total_donated: number;
+    donation_count: number;
+    last_donation_at: string | null;
+  }>();
+
+  for (const d of donations ?? []) {
+    const key = `${d.donor_name}||${d.donor_email || ''}`;
+    const existing = donorMap.get(key);
+    if (existing) {
+      existing.total_donated += d.amount || 0;
+      existing.donation_count += 1;
+      if (d.paid_at && (!existing.last_donation_at || d.paid_at > existing.last_donation_at)) {
+        existing.last_donation_at = d.paid_at;
+      }
+    } else {
+      donorMap.set(key, {
+        name: d.donor_name || 'Hamba Allah',
+        email: d.donor_email,
+        phone: d.donor_phone,
+        total_donated: d.amount || 0,
+        donation_count: 1,
+        last_donation_at: d.paid_at,
+      });
+    }
+  }
+
+  const donors = Array.from(donorMap.values()).sort((a, b) => b.total_donated - a.total_donated);
+  const totalDonors = donors.length;
+  const totalDonated = donors.reduce((sum, d) => sum + d.total_donated, 0);
 
   return (
     <div className="space-y-6">
@@ -78,7 +115,7 @@ export default async function DonaturPage() {
           <CardTitle className="text-lg font-heading">Daftar Donatur</CardTitle>
         </CardHeader>
         <CardContent>
-          {!donors || donors.length === 0 ? (
+          {donors.length === 0 ? (
             <div className="text-center py-14">
               <div className="w-16 h-16 rounded-2xl bg-blue-50 dark:bg-blue-950/30 flex items-center justify-center mx-auto mb-4">
                 <Users className="w-8 h-8 text-blue-400/50" />
@@ -104,8 +141,8 @@ export default async function DonaturPage() {
                   </TableRow>
                 </TableHeader>
                 <TableBody>
-                  {donors.map((donor) => (
-                    <TableRow key={donor.id}>
+                  {donors.map((donor, i) => (
+                    <TableRow key={i}>
                       <TableCell className="font-medium">{donor.name}</TableCell>
                       <TableCell className="text-sm text-muted-foreground">
                         {donor.email || '-'}
@@ -114,11 +151,11 @@ export default async function DonaturPage() {
                         {donor.phone || '-'}
                       </TableCell>
                       <TableCell className="font-semibold text-primary">
-                        {formatRupiah(donor.total_donated || 0)}
+                        {formatRupiah(donor.total_donated)}
                       </TableCell>
                       <TableCell>
                         <Badge variant="outline" className="text-xs">
-                          {donor.donation_count || 0}x
+                          {donor.donation_count}x
                         </Badge>
                       </TableCell>
                       <TableCell className="text-xs text-muted-foreground">

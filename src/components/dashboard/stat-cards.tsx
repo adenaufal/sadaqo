@@ -62,7 +62,7 @@ export function StatCards({ totalCollected, totalDonors, activeCampaigns, avgDon
             transition={{ duration: 0.45, delay: i * 0.07, ease }}
           >
             <Card className="border-border/50 h-full">
-              <CardContent className="pt-6">
+              <CardContent className="p-4">
                 <div className="flex items-center gap-3">
                   <div className={`w-10 h-10 rounded-xl ${bgColor} flex items-center justify-center`}>
                     <Icon className={`w-5 h-5 ${color}`} />

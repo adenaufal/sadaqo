@@ -99,15 +99,9 @@ export default async function DashboardPage() {
             <div className="text-center py-10">
               <Megaphone className="w-12 h-12 text-muted-foreground/20 mx-auto mb-4" />
               <p className="font-medium mb-1">Kampanye Anda akan muncul di sini</p>
-              <p className="text-sm text-muted-foreground mb-5 max-w-xs mx-auto">
+              <p className="text-sm text-muted-foreground max-w-xs mx-auto">
                 Buat kampanye pertama dalam hitungan menit dan langsung bagikan ke jamaah via WhatsApp.
               </p>
-              <Button asChild className="gradient-emerald text-white">
-                <Link href="/kampanye/buat">
-                  <Plus className="w-4 h-4 mr-1" />
-                  Buat Kampanye Pertama
-                </Link>
-              </Button>
             </div>
           ) : (
             <div className="space-y-4">

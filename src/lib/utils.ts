@@ -72,9 +72,11 @@ export function shareViaWhatsApp(
   const progress = calculateProgress(collected, target);
   const message = encodeURIComponent(
     `🕌 *${campaignTitle}*\n\n` +
-      `Progres: ${progress}% tercapai\n` +
-      `Terkumpul: ${formatRupiah(collected)} / ${formatRupiah(target)}\n\n` +
-      `Yuk berdonasi! 👇\n${campaignUrl}`
+      `Alhamdulillah, sudah ${progress}% tercapai!\n` +
+      `Terkumpul ${formatRupiah(collected)} dari target ${formatRupiah(target)}.\n\n` +
+      `Setiap donasi tercatat transparan — cek langsung di sini 👇\n` +
+      `${campaignUrl}\n\n` +
+      `Jazakallahu khairan 🤲`
   );
   window.open(`https://wa.me/?text=${message}`, '_blank');
 }

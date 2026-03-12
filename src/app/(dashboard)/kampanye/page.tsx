@@ -51,15 +51,9 @@ export default async function KampanyePage() {
               <Megaphone className="w-8 h-8 text-white" />
             </div>
             <p className="font-semibold text-foreground/80 mb-1">Mulai kampanye pertama Anda 🌙</p>
-            <p className="text-sm text-muted-foreground mb-5 max-w-xs mx-auto">
+            <p className="text-sm text-muted-foreground max-w-xs mx-auto">
               5 menit setup. Seumur hidup transparansi. Jamaah Anda menunggu cara yang lebih mudah untuk berdonasi.
             </p>
-            <Button asChild className="gradient-emerald text-white">
-              <Link href="/kampanye/buat">
-                <Plus className="w-4 h-4 mr-1" />
-                Buat Kampanye Pertama
-              </Link>
-            </Button>
           </CardContent>
         </Card>
       ) : (

@@ -49,7 +49,7 @@ export async function POST(req: NextRequest) {
         is_anonymous: isAnonymous,
         message,
         payment_status: 'pending',
-        mayar_transaction_id: mayarResponse?.data?.id ?? mayarResponse?.data?.transactionId ?? null,
+        mayar_transaction_id: mayarResponse?.data?.transactionId || mayarResponse?.data?.id || null,
         mayar_payment_url: mayarResponse?.data?.link ?? null,
       })
       .select()

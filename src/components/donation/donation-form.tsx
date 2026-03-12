@@ -161,24 +161,26 @@ export function DonationForm({
 
           <div className="grid grid-cols-2 gap-3">
             <div className="space-y-2">
-              <Label htmlFor="donor_email">Email</Label>
+              <Label htmlFor="donor_email">Email *</Label>
               <Input
                 id="donor_email"
                 type="email"
                 placeholder="email@contoh.com"
                 value={form.donor_email}
                 onChange={(e) => setForm({ ...form, donor_email: e.target.value })}
+                required
                 className="h-11"
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="donor_phone">WhatsApp</Label>
+              <Label htmlFor="donor_phone">WhatsApp *</Label>
               <Input
                 id="donor_phone"
                 type="tel"
                 placeholder="08123456789"
                 value={form.donor_phone}
                 onChange={(e) => setForm({ ...form, donor_phone: e.target.value })}
+                required
                 className="h-11"
               />
             </div>

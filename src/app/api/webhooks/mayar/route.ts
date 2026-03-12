@@ -12,11 +12,14 @@ export async function POST(req: NextRequest) {
     const payload: MayarWebhookPayload = await req.json();
     const { event, data } = payload;
 
+    console.log('[Webhook] Event:', event, '| data.id:', data?.id, '| data.transactionId:', data?.transactionId);
+
     if (event === 'payment.received') {
-      // Match by payment link id (stored at creation) OR transactionId (stored after first webhook)
-      // Using .in() handles both cases and prevents double-processing
+      // matchIds: try all possible IDs Mayar might send
       const matchIds = [data.id, data.transactionId].filter(Boolean);
-      const { error } = await (supabase
+      console.log('[Webhook] Matching against mayar_transaction_id in:', matchIds);
+
+      const { data: updated, error } = await (supabase
         .from('donations') as any)
         .update({
           payment_status: 'paid',
@@ -24,12 +27,15 @@ export async function POST(req: NextRequest) {
           mayar_transaction_id: data.transactionId || data.id,
         })
         .in('mayar_transaction_id', matchIds)
-        .neq('payment_status', 'paid'); // idempotency: skip if already paid
+        .neq('payment_status', 'paid') // idempotency: skip if already paid
+        .select('id, campaign_id');
 
       if (error) {
-        console.error('Webhook DB error:', error);
+        console.error('[Webhook] DB error:', error);
         throw error;
       }
+
+      console.log('[Webhook] Updated donations:', updated?.length ?? 0, updated);
     } else if (event === 'payment.failed') {
       await (supabase
         .from('donations') as any)
@@ -44,7 +50,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ received: true }, { status: 200 });
   } catch (error) {
-    console.error('Webhook error:', error);
+    console.error('[Webhook] Error:', error);
     return NextResponse.json({ error: 'Webhook processing failed' }, { status: 500 });
   }
 }

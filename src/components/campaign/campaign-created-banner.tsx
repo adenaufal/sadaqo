@@ -45,7 +45,12 @@ export function CampaignCreatedBanner({ campaignTitle, campaignUrl }: CampaignCr
   if (dismissed) return null;
 
   const whatsappText = encodeURIComponent(
-    `Assalamu'alaikum, kami membuka kampanye "${campaignTitle}".\n\nYuk berdonasi dan lihat progress transparansinya di sini:\n${campaignUrl}\n\nJazakallahu khairan 🤲`
+    `Assalamu'alaikum warahmatullahi wabarakatuh 🤲\n\n` +
+    `Kami membuka kampanye *${campaignTitle}* melalui Sadaqo.\n\n` +
+    `✅ Setiap donasi tercatat transparan\n` +
+    `✅ Bisa dipantau kapan saja\n\n` +
+    `Yuk berdonasi di sini 👇\n${campaignUrl}\n\n` +
+    `Jazakallahu khairan — mohon disebarkan 🙏`
   );
   const whatsappUrl = `https://wa.me/?text=${whatsappText}`;
 

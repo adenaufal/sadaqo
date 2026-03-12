@@ -208,22 +208,6 @@ export default async function PublicCampaignPage({
           <DonorLeaderboard donations={donations} />
         )}
 
-        {/* Bottom CTA (desktop) */}
-        <div className="hidden sm:block text-center space-y-3 pt-4">
-          <Button asChild className="gradient-emerald text-white h-12 px-8 text-base font-semibold">
-            <Link href={`/donate/${campaign.slug}`}>
-              <Heart className="w-5 h-5 mr-2" />
-              Donasi Sekarang
-            </Link>
-          </Button>
-          <p className="text-xs text-muted-foreground">
-            Pembayaran aman melalui Mayar &middot;{' '}
-            <Link href="/kalkulator-zakat" className="underline hover:text-primary">
-              Hitung Zakat
-            </Link>
-          </p>
-        </div>
-
         {/* Spacer for mobile sticky bar */}
         <div className="h-20 sm:hidden" />
       </div>

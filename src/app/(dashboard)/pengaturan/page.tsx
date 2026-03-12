@@ -9,8 +9,10 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Badge } from '@/components/ui/badge';
 import { toast } from 'sonner';
-import { Loader2, Save, User, Building } from 'lucide-react';
+import { Loader2, Save, User, Building, Landmark, Bell, Plug } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
 export default function PengaturanPage() {
@@ -163,6 +165,109 @@ export default function PengaturanPage() {
               Simpan Perubahan
             </Button>
           </form>
+        </CardContent>
+      </Card>
+
+      {/* Rekening Organisasi — Mockup */}
+      <Card className="border-border/50 opacity-80">
+        <CardHeader>
+          <CardTitle className="text-lg font-heading flex items-center gap-2">
+            <Landmark className="w-5 h-5" />
+            Rekening Organisasi
+          </CardTitle>
+          <CardDescription>Rekening penerimaan donasi resmi organisasi Anda</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="space-y-2">
+            <Label>Nama Bank</Label>
+            <Select disabled>
+              <SelectTrigger className="h-11">
+                <SelectValue placeholder="Pilih bank..." />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="bri">BRI</SelectItem>
+                <SelectItem value="bca">BCA</SelectItem>
+                <SelectItem value="mandiri">Mandiri</SelectItem>
+                <SelectItem value="bsi">BSI</SelectItem>
+                <SelectItem value="muamalat">Bank Muamalat</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="space-y-2">
+            <Label>Nomor Rekening</Label>
+            <Input className="h-11" placeholder="0123456789" disabled />
+          </div>
+          <div className="space-y-2">
+            <Label>Nama Pemilik Rekening</Label>
+            <Input className="h-11" placeholder="Nama sesuai rekening" disabled />
+          </div>
+          <div className="flex items-center gap-2 rounded-lg bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-800 px-4 py-3">
+            <span className="text-amber-700 dark:text-amber-400 text-sm">
+              🔒 Segera hadir — rekening akan diverifikasi oleh tim Sadaqo
+            </span>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Notifikasi — Mockup */}
+      <Card className="border-border/50 opacity-80">
+        <CardHeader>
+          <CardTitle className="text-lg font-heading flex items-center gap-2">
+            <Bell className="w-5 h-5" />
+            Notifikasi
+          </CardTitle>
+          <CardDescription>Atur kapan dan bagaimana Anda menerima pemberitahuan</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          {[
+            { label: 'Notifikasi email saat ada donasi masuk', defaultOn: true },
+            { label: 'Ringkasan donasi mingguan', defaultOn: false },
+            { label: 'Notifikasi WhatsApp', defaultOn: false },
+          ].map((item) => (
+            <div key={item.label} className="flex items-center justify-between">
+              <span className="text-sm text-foreground/70">{item.label}</span>
+              <div className={`w-10 h-5 rounded-full transition-colors ${item.defaultOn ? 'bg-primary/40' : 'bg-muted'} cursor-not-allowed relative`}>
+                <div className={`absolute top-0.5 w-4 h-4 rounded-full bg-white shadow transition-all ${item.defaultOn ? 'left-5' : 'left-0.5'}`} />
+              </div>
+            </div>
+          ))}
+          <div className="flex items-center gap-2 rounded-lg bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-800 px-4 py-3">
+            <span className="text-amber-700 dark:text-amber-400 text-sm">🔒 Segera hadir</span>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Integrasi — Mockup */}
+      <Card className="border-border/50 opacity-80">
+        <CardHeader>
+          <CardTitle className="text-lg font-heading flex items-center gap-2">
+            <Plug className="w-5 h-5" />
+            Integrasi
+          </CardTitle>
+          <CardDescription>Hubungkan Sadaqo dengan platform lain</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="flex items-center justify-between p-3 rounded-lg border border-border/50">
+            <div>
+              <p className="text-sm font-medium">Mayar Payment</p>
+              <p className="text-xs text-muted-foreground">Gateway pembayaran</p>
+            </div>
+            <Badge className="bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400 border-0">
+              Terhubung
+            </Badge>
+          </div>
+          <div className="flex items-center justify-between p-3 rounded-lg border border-border/50">
+            <div>
+              <p className="text-sm font-medium">WhatsApp Business</p>
+              <p className="text-xs text-muted-foreground">Notifikasi otomatis ke donatur</p>
+            </div>
+            <Button size="sm" variant="outline" disabled className="text-xs">
+              Segera Hadir
+            </Button>
+          </div>
+          <p className="text-xs text-muted-foreground">
+            Integrasi lanjutan akan tersedia setelah peluncuran.
+          </p>
         </CardContent>
       </Card>
     </div>
