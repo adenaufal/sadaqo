@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
+import type { Database } from '@/types/database';
 import { CAMPAIGN_TYPES } from '@/lib/constants';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -17,7 +18,6 @@ import Link from 'next/link';
 export default function EditKampanyePage() {
   const router = useRouter();
   const { id } = useParams<{ id: string }>();
-  const supabase = createClient();
 
   const [loading, setLoading] = useState(false);
   const [fetching, setFetching] = useState(true);
@@ -37,6 +37,7 @@ export default function EditKampanyePage() {
   });
 
   useEffect(() => {
+    const supabase = createClient();
     const fetchCampaign = async () => {
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) { router.push('/login'); return; }
@@ -50,7 +51,7 @@ export default function EditKampanyePage() {
 
       if (error || !data) { router.push('/kampanye'); return; }
 
-      const d = data as any;
+      const d = data as Database['public']['Tables']['campaigns']['Row'];
       setForm({
         title: d.title,
         campaign_type: d.campaign_type,
@@ -65,7 +66,7 @@ export default function EditKampanyePage() {
       setFetching(false);
     };
     fetchCampaign();
-  }, [id]);
+  }, [id, router]);
 
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -78,6 +79,7 @@ export default function EditKampanyePage() {
     const ext = file.name.split('.').pop();
     const fileName = `${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
 
+    const supabase = createClient();
     const { data, error } = await supabase.storage
       .from('campaign-covers')
       .upload(fileName, file, { upsert: false });
@@ -102,18 +104,22 @@ export default function EditKampanyePage() {
     e.preventDefault();
     setLoading(true);
 
-    const { error } = await supabase
+    const supabase = createClient();
+    const updatePayload: Database['public']['Tables']['campaigns']['Update'] = {
+      title: form.title,
+      campaign_type: form.campaign_type,
+      target_amount: Number(form.target_amount),
+      description: form.description || null,
+      beneficiary_story: form.beneficiary_story || null,
+      cover_image_url: form.cover_image_url || null,
+      end_date: form.end_date ? new Date(form.end_date).toISOString() : null,
+      is_active: form.is_active,
+    };
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const { error } = await (supabase as any)
       .from('campaigns')
-      .update({
-        title: form.title,
-        campaign_type: form.campaign_type,
-        target_amount: Number(form.target_amount),
-        description: form.description || null,
-        beneficiary_story: form.beneficiary_story || null,
-        cover_image_url: form.cover_image_url || null,
-        end_date: form.end_date ? new Date(form.end_date).toISOString() : null,
-        is_active: form.is_active,
-      } as any)
+      .update(updatePayload)
       .eq('id', id);
 
     if (error) {

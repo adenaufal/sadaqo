@@ -32,16 +32,21 @@ export function DeleteCampaignButton({ campaignId }: { campaignId: string }) {
     } else {
       toast.success('Kampanye berhasil dihapus');
       router.push('/kampanye');
-      router.refresh();
     }
   };
 
   return (
     <AlertDialog>
-      <AlertDialogTrigger asChild>
-        <Button variant="outline" size="sm" className="text-destructive hover:text-destructive border-destructive/30 hover:border-destructive/60">
-          <Trash2 className="w-4 h-4" />
-        </Button>
+      <AlertDialogTrigger
+        render={
+          <Button
+            variant="outline"
+            size="sm"
+            className="text-destructive hover:text-destructive border-destructive/30 hover:border-destructive/60"
+          />
+        }
+      >
+        <Trash2 className="w-4 h-4" />
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
