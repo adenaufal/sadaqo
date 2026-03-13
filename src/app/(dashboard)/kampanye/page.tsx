@@ -36,12 +36,6 @@ export default async function KampanyePage() {
           <h1 className="text-2xl font-bold font-heading">Kampanye</h1>
           <p className="text-muted-foreground text-sm">Kelola semua kampanye donasi Anda</p>
         </div>
-        <Button asChild className="gradient-emerald text-white">
-          <Link href="/kampanye/buat">
-            <Plus className="w-4 h-4 mr-1" />
-            Buat Kampanye
-          </Link>
-        </Button>
       </div>
 
       {!campaigns || campaigns.length === 0 ? (

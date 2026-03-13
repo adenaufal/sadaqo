@@ -60,12 +60,6 @@ export default async function DashboardPage() {
               : `Selamat datang kembali, ${displayName}!`}
           </p>
         </div>
-        <Button asChild className="gradient-emerald text-white">
-          <Link href="/kampanye/buat">
-            <Plus className="w-4 h-4 mr-1" />
-            Buat Kampanye
-          </Link>
-        </Button>
       </div>
 
       {/* Onboarding checklist for new users */}

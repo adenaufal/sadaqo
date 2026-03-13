@@ -5,6 +5,8 @@ import { Moon, ArrowLeft, Clock, Calendar } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 export async function generateStaticParams() {
   return articles.map((a) => ({ slug: a.slug }));
@@ -32,8 +34,6 @@ export default async function ArtikelPage({
   const { slug } = await params;
   const article = getArticleBySlug(slug);
   if (!article) notFound();
-
-  const sections = article.content.split('\n\n').filter(Boolean);
 
   return (
     <div className="min-h-screen bg-background">
@@ -100,51 +100,18 @@ export default async function ArtikelPage({
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
           <div className="prose prose-base max-w-none dark:prose-invert
             prose-headings:font-heading prose-headings:font-bold prose-headings:tracking-tight
-            prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4
-            prose-p:text-foreground/80 prose-p:leading-[1.8] prose-p:text-base
+            prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-5
+            prose-p:text-foreground/80 prose-p:leading-[1.85] prose-p:text-base prose-p:my-5
             prose-strong:text-foreground prose-strong:font-semibold
-            prose-li:text-foreground/80 prose-li:leading-relaxed
-            prose-ul:my-4 prose-ol:my-4
+            prose-li:text-foreground/80 prose-li:leading-[1.75] prose-li:my-1.5
+            prose-ul:my-5 prose-ol:my-5 prose-ul:space-y-1 prose-ol:space-y-1
             prose-hr:border-border/50 prose-hr:my-10
-            prose-a:text-primary prose-a:underline-offset-2">
-            {sections.map((section, i) => {
-              if (section.startsWith('## ')) {
-                return <h2 key={i}>{section.replace('## ', '')}</h2>;
-              }
-              if (section.startsWith('**') && section.endsWith('**')) {
-                return <p key={i}><strong>{section.slice(2, -2)}</strong></p>;
-              }
-              if (section.startsWith('---')) {
-                return <hr key={i} />;
-              }
-              if (section.startsWith('*') && section.endsWith('*') && !section.startsWith('**')) {
-                return (
-                  <p key={i} className="text-sm text-muted-foreground italic not-prose border-l-2 border-border/60 pl-4 py-1">
-                    {section.slice(1, -1)}
-                  </p>
-                );
-              }
-              if (section.includes('\n') && section.split('\n').every(l => l.startsWith('- ') || /^\d+\./.test(l))) {
-                const items = section.split('\n').filter(Boolean);
-                const isOrdered = /^\d+\./.test(items[0]);
-                const Tag = isOrdered ? 'ol' : 'ul';
-                return (
-                  <Tag key={i}>
-                    {items.map((item, j) => (
-                      <li key={j}>{item.replace(/^[-\d]+[.)]\s*/, '')}</li>
-                    ))}
-                  </Tag>
-                );
-              }
-              const parts = section.split(/\*\*(.+?)\*\*/g);
-              return (
-                <p key={i}>
-                  {parts.map((part, j) =>
-                    j % 2 === 1 ? <strong key={j}>{part}</strong> : part
-                  )}
-                </p>
-              );
-            })}
+            prose-a:text-primary prose-a:underline-offset-2
+            prose-em:text-foreground/70
+            prose-blockquote:border-l-2 prose-blockquote:border-primary/40 prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:text-sm prose-blockquote:text-muted-foreground">
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+              {article.content}
+            </ReactMarkdown>
           </div>
 
           {/* ── CTA Block ── */}
