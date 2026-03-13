@@ -35,7 +35,7 @@ export function Hero() {
       <div className="absolute bottom-0 right-0 w-80 h-80 rounded-full bg-accent/5 blur-[100px] pointer-events-none" />
 
       <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-10 items-center min-h-[100dvh] py-24 lg:py-0">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 lg:gap-10 items-center min-h-[100dvh] py-20 md:py-24 lg:py-0">
 
           {/* ── LEFT: Copy ── */}
           <motion.div
@@ -46,15 +46,15 @@ export function Hero() {
           >
             {/* Badge */}
             <motion.div variants={itemVariant}>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/10 border border-primary/15 text-primary text-sm font-medium mb-7">
-                <Moon className="w-3.5 h-3.5" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/10 border border-primary/15 text-primary text-xs sm:text-sm font-medium mb-6 md:mb-7">
+                <Moon className="w-3.5 h-3.5 shrink-0" />
                 <span>Khusus Masjid &amp; Komunitas Muslim Indonesia</span>
               </div>
             </motion.div>
 
             {/* Headline */}
             <motion.h1
-              className="text-4xl sm:text-5xl lg:text-[3.25rem] font-bold font-heading tracking-tight leading-[1.1] mb-5"
+              className="text-4xl sm:text-5xl lg:text-[3.25rem] xl:text-6xl 2xl:text-7xl font-bold font-heading tracking-tight leading-[1.1] mb-5"
               variants={itemVariant}
             >
               Jamaah Tanya Progress Donasi Terus?{' '}
@@ -63,16 +63,16 @@ export function Hero() {
 
             {/* Description */}
             <motion.p
-              className="text-base text-muted-foreground leading-relaxed max-w-[52ch] mb-8"
+              className="text-base xl:text-lg text-muted-foreground leading-relaxed max-w-[52ch] mb-8"
               variants={itemVariant}
             >
               Kampanye zakat profesional lengkap dengan kalkulator dan transparansi publik — siap dibagikan ke WhatsApp dalam 5 menit. Gratis.
             </motion.p>
 
             {/* CTAs */}
-            <motion.div className="flex flex-col sm:flex-row gap-3 mb-10" variants={itemVariant}>
+            <motion.div className="flex flex-col sm:flex-row gap-3 mb-10 w-full sm:w-auto" variants={itemVariant}>
               <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} transition={{ duration: 0.15 }}>
-                <Button asChild size="lg" className="gradient-emerald text-white h-12 px-7 text-base shadow-lg hover:shadow-xl transition-shadow">
+                <Button asChild size="lg" className="gradient-emerald text-white h-12 px-7 text-base shadow-lg hover:shadow-xl transition-shadow w-full sm:w-auto">
                   <Link href="/register">
                     Buat Kampanye Pertama Saya
                     <ArrowRight className="w-4 h-4 ml-2" />
@@ -80,7 +80,7 @@ export function Hero() {
                 </Button>
               </motion.div>
               <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.97 }} transition={{ duration: 0.15 }}>
-                <Button asChild variant="outline" size="lg" className="h-12 px-7 text-base">
+                <Button asChild variant="outline" size="lg" className="h-12 px-7 text-base w-full sm:w-auto">
                   <Link href="/kalkulator-zakat">
                     <Calculator className="w-4 h-4 mr-2" />
                     Coba Kalkulator Zakat
@@ -89,7 +89,7 @@ export function Hero() {
               </motion.div>
             </motion.div>
 
-            {/* Micro-stats — horizontal dots row, no forbidden 3-col card grid */}
+            {/* Micro-stats */}
             <motion.div className="flex flex-wrap gap-x-6 gap-y-3" variants={itemVariant}>
               {checks.map((c) => (
                 <div key={c.value} className="flex items-center gap-2">
@@ -103,7 +103,7 @@ export function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* ── RIGHT: Image (desktop only) ── */}
+          {/* ── RIGHT: Image (desktop lg+ only — tablet uses fallback below) ── */}
           <motion.div
             className="relative hidden lg:flex items-center justify-center"
             initial={{ opacity: 0, x: 36 }}
@@ -164,14 +164,14 @@ export function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* ── Mobile image fallback ── */}
+          {/* ── Tablet + Mobile image fallback (hidden on lg+) ── */}
           <motion.div
             className="relative lg:hidden"
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.5, ease }}
           >
-            <div className="rounded-2xl overflow-hidden shadow-xl border border-primary/10">
+            <div className="relative rounded-2xl overflow-hidden shadow-xl border border-primary/10">
               <Image
                 src="/hero-mosque.png"
                 alt="Komunitas masjid menggunakan Sadaqo untuk kampanye donasi"
@@ -180,6 +180,21 @@ export function Hero() {
                 className="w-full object-cover"
                 priority
               />
+
+              {/* Floating badge inside mobile/tablet image — bottom overlay */}
+              <motion.div
+                className="absolute bottom-4 left-4 bg-card/95 backdrop-blur-sm border border-border rounded-xl px-3 py-2 flex items-center gap-2.5"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 1.0, ease }}
+              >
+                <span className="relative flex h-2 w-2 shrink-0">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+                </span>
+                <p className="text-xs font-semibold text-foreground">Rp 127,5 jt terkumpul</p>
+                <p className="text-[11px] text-muted-foreground">Al-Ikhlas, Jakarta</p>
+              </motion.div>
             </div>
           </motion.div>
 
