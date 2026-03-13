@@ -1,4 +1,4 @@
-# Setup AmanahFlow
+# Setup Sadaqo
 
 ## Prasyarat
 
@@ -54,10 +54,10 @@ Di **Authentication → URL Configuration**:
 Di **Authentication → Email Templates**, ganti template untuk:
 
 **"Magic Link"** — salin isi dari: `supabase/email-templates/magic-link.html`
-- Subject: `Link Masuk ke AmanahFlow`
+- Subject: `Link Masuk ke Sadaqo`
 
 **"Confirm signup"** — salin isi dari: `supabase/email-templates/confirm-signup.html`
-- Subject: `Selamat Datang di AmanahFlow — Verifikasi Email Anda`
+- Subject: `Selamat Datang di Sadaqo — Verifikasi Email Anda`
 
 > **Mengapa localhost:3000 di email?**
 > Karena "Site URL" di Supabase masih default ke localhost. Ubah ke URL production di URL Configuration.

@@ -1,5 +1,5 @@
 -- ============================================
--- ZakatFlow Demo Seed Data
+-- Sadaqo Demo Seed Data
 -- Run this AFTER the initial schema migration
 -- ============================================
 

@@ -10,7 +10,7 @@
 Platform paling mudah untuk masjid dan komunitas Muslim mengelola kampanye zakat & donasi secara transparan.
 
 **What it does:**
-AmanahFlow memungkinkan pengurus masjid dan komunitas Muslim membuat kampanye fundraising (zakat, infaq, sedekah, wakaf, qurban) dalam hitungan menit. Platform ini dilengkapi kalkulator zakat terintegrasi, dashboard real-time, dan halaman transparansi publik — semua tanpa keahlian teknis apapun. Pembayaran diproses via Mayar yang mendukung semua metode populer Indonesia.
+Sadaqo memungkinkan pengurus masjid dan komunitas Muslim membuat kampanye fundraising (zakat, infaq, sedekah, wakaf, qurban) dalam hitungan menit. Platform ini dilengkapi kalkulator zakat terintegrasi, dashboard real-time, dan halaman transparansi publik — semua tanpa keahlian teknis apapun. Pembayaran diproses via Mayar yang mendukung semua metode populer Indonesia.
 
 **Product category:**
 Platform donasi & fundraising islami / Islamic charity management platform
@@ -103,7 +103,7 @@ Pengelolaan zakat dan donasi di masjid masih manual — spreadsheet, chat WhatsA
 - Onboarding 30 detik, zero technical skill required
 
 **How we do it differently:**
-Bukan platform donasi generik — AmanahFlow dirancang dari awal khusus untuk kebutuhan zakat dan fundraising islami di Indonesia, dengan terminologi dan flow yang familiar bagi pengurus masjid.
+Bukan platform donasi generik — Sadaqo dirancang dari awal khusus untuk kebutuhan zakat dan fundraising islami di Indonesia, dengan terminologi dan flow yang familiar bagi pengurus masjid.
 
 **Why customers choose us:**
 "Gratis, langsung jadi, bisa langsung disebarkan ke jamaah, dan jamaah bisa lihat sendiri progressnya."
@@ -114,7 +114,7 @@ Bukan platform donasi generik — AmanahFlow dirancang dari awal khusus untuk ke
 
 | Objection | Response |
 |-----------|----------|
-| "Apakah aman? Uangnya ke mana?" | Pembayaran diproses langsung via Mayar ke rekening masjid. AmanahFlow tidak pegang dana donatur sama sekali. |
+| "Apakah aman? Uangnya ke mana?" | Pembayaran diproses langsung via Mayar ke rekening masjid. Sadaqo tidak pegang dana donatur sama sekali. |
 | "Kami tidak paham teknologi" | Daftar 30 detik, buat kampanye dalam 5 menit. Tidak butuh pengalaman teknis apapun. Ini lebih mudah dari buat status WhatsApp. |
 | "Kampanye kami kecil, apakah cocok?" | Justru untuk komunitas kecil ini paling berguna — bisa terlihat profesional seperti lembaga besar tanpa biaya sama sekali. |
 
@@ -130,7 +130,7 @@ Bukan platform donasi generik — AmanahFlow dirancang dari awal khusus untuk ke
 **Push (frustrasi dari solusi lama):**
 Capek merekap manual di spreadsheet, malu kampanye terlihat amatir, khawatir jamaah tidak percaya tanpa laporan yang jelas
 
-**Pull (yang menarik ke AmanahFlow):**
+**Pull (yang menarik ke Sadaqo):**
 Halaman kampanye profesional siap pakai, transparansi otomatis, kalkulator zakat bawaan, sharing WhatsApp satu klik
 
 **Habit (yang membuat mereka tetap dengan cara lama):**
@@ -176,7 +176,7 @@ Halaman kampanye profesional siap pakai, transparansi otomatis, kalkulator zakat
 | Wakaf | Sedekah jariyah aset produktif |
 | Qurban | Penyembelihan hewan di Hari Raya Idul Adha |
 | Kampanye | Halaman fundraising / campaign page |
-| Mayar | Payment gateway yang digunakan AmanahFlow |
+| Mayar | Payment gateway yang digunakan Sadaqo |
 
 ---
 
@@ -217,7 +217,7 @@ Transfer Bank, QRIS, GoPay, OVO, Dana, ShopeePay, Kartu Kredit, dan lainnya
 |-------|-------|
 | Mudah & Cepat | Daftar 30 detik, kampanye siap menit itu juga |
 | Transparan | Halaman publik otomatis, siapa saja bisa cek |
-| Amanah | Dana langsung ke rekening masjid via Mayar, bukan ditampung AmanahFlow |
+| Amanah | Dana langsung ke rekening masjid via Mayar, bukan ditampung Sadaqo |
 | Gratis | Tidak ada biaya setup, tidak perlu kartu kredit |
 
 ---

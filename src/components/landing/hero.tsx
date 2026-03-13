@@ -34,8 +34,8 @@ export function Hero() {
       <div className="absolute top-1/3 left-[55%] w-[640px] h-[640px] rounded-full bg-primary/5 blur-[160px] pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-80 h-80 rounded-full bg-accent/5 blur-[100px] pointer-events-none" />
 
-      <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 lg:gap-10 items-center min-h-[100dvh] py-20 md:py-24 lg:py-0">
+      <div className="relative w-full max-w-7xl xl:max-w-[1440px] 2xl:max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-[2fr_3fr] gap-8 md:gap-10 lg:gap-12 items-center min-h-[100dvh] py-20 md:py-24 lg:py-0">
 
           {/* ── LEFT: Copy ── */}
           <motion.div

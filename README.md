@@ -1,7 +1,7 @@
 <div align="center">
-  <img width="1200" height="475" alt="AmanahFlow Banner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+  <img width="1200" height="475" alt="Sadaqo Banner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
 
-  <h1>AmanahFlow</h1>
+  <h1>Sadaqo</h1>
   <p><strong>Platform pengelolaan zakat & donasi untuk masjid dan komunitas Muslim Indonesia</strong></p>
 
   <p>
@@ -11,16 +11,16 @@
 
   <br/>
 
-  [![Live App](https://img.shields.io/badge/Coba%20Sekarang-AmanahFlow-10b981?style=for-the-badge)](https://amanahflow.vercel.app)
+  [![Live App](https://img.shields.io/badge/Coba%20Sekarang-Sadaqo-10b981?style=for-the-badge)](https://amanahflow.vercel.app)
   [![Kalkulator Zakat](https://img.shields.io/badge/Kalkulator-Zakat-059669?style=for-the-badge)](https://amanahflow.vercel.app/kalkulator-zakat)
 
 </div>
 
 ---
 
-## Apa itu AmanahFlow?
+## Apa itu Sadaqo?
 
-AmanahFlow adalah platform digital yang memudahkan pengurus masjid dan komunitas Muslim untuk mengelola kampanye zakat dan donasi secara **transparan** dan **profesional** — tanpa perlu keahlian teknis apapun.
+Sadaqo adalah platform digital yang memudahkan pengurus masjid dan komunitas Muslim untuk mengelola kampanye zakat dan donasi secara **transparan** dan **profesional** — tanpa perlu keahlian teknis apapun.
 
 Dari kalkulator zakat bawaan, halaman kampanye siap bagikan, hingga laporan real-time — semuanya ada di satu tempat.
 
@@ -86,7 +86,7 @@ Satu klik untuk menyebarkan kampanye ke seluruh jamaah masjid. Pesan sudah difor
 
 ## Pembayaran
 
-AmanahFlow didukung oleh **[Mayar](https://mayar.id)** — platform pembayaran terpercaya yang mendukung semua metode populer Indonesia:
+Sadaqo didukung oleh **[Mayar](https://mayar.id)** — platform pembayaran terpercaya yang mendukung semua metode populer Indonesia:
 
 > Transfer Bank · QRIS · GoPay · OVO · Dana · ShopeePay · Kartu Kredit · dan lainnya
 

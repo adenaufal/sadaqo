@@ -1,5 +1,5 @@
 -- ============================================
--- ZakatFlow Database Schema
+-- Sadaqo Database Schema
 -- ============================================
 
 -- Enable necessary extensions
