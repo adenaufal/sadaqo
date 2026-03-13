@@ -13,6 +13,7 @@ import { DonationTicker } from '@/components/campaign/donation-ticker';
 import { DonorLeaderboard } from '@/components/donation/donor-leaderboard';
 import { CountdownTimer } from '@/components/campaign/countdown-timer';
 import { ShareButton } from '@/components/donation/share-button';
+import { ExpandableText } from '@/components/campaign/expandable-text';
 import { Heart, Users, Wallet, Clock, Megaphone } from 'lucide-react';
 import Link from 'next/link';
 import type { Metadata } from 'next';
@@ -167,16 +168,18 @@ export default async function PublicCampaignPage({
               <CardTitle className="text-base font-heading">Tentang Kampanye</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="prose prose-sm max-w-none dark:prose-invert
-                prose-p:text-muted-foreground prose-p:leading-relaxed prose-p:my-2 prose-p:text-sm
-                prose-strong:text-foreground prose-strong:font-semibold
-                prose-headings:font-semibold prose-headings:text-foreground
-                prose-li:text-muted-foreground prose-li:text-sm prose-li:my-0.5
-                prose-ul:my-2 prose-ol:my-2
-                prose-hr:border-border/40 prose-hr:my-4
-                prose-em:text-muted-foreground">
-                <ReactMarkdown remarkPlugins={[remarkGfm]}>{campaign.description}</ReactMarkdown>
-              </div>
+              <ExpandableText>
+                <div className="prose prose-sm max-w-none dark:prose-invert
+                  prose-p:text-muted-foreground prose-p:leading-relaxed prose-p:my-2 prose-p:text-sm
+                  prose-strong:text-foreground prose-strong:font-semibold
+                  prose-headings:font-semibold prose-headings:text-foreground
+                  prose-li:text-muted-foreground prose-li:text-sm prose-li:my-0.5
+                  prose-ul:my-2 prose-ol:my-2
+                  prose-hr:border-border/40 prose-hr:my-4
+                  prose-em:text-muted-foreground">
+                  <ReactMarkdown remarkPlugins={[remarkGfm]}>{campaign.description}</ReactMarkdown>
+                </div>
+              </ExpandableText>
             </CardContent>
           </Card>
         )}
@@ -188,15 +191,17 @@ export default async function PublicCampaignPage({
               <CardTitle className="text-base font-heading">Cerita Penerima Manfaat</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="prose prose-sm max-w-none dark:prose-invert
-                prose-p:text-muted-foreground prose-p:leading-relaxed prose-p:my-2 prose-p:text-sm prose-p:italic
-                prose-strong:text-foreground prose-strong:font-semibold
-                prose-headings:font-semibold prose-headings:text-foreground
-                prose-li:text-muted-foreground prose-li:text-sm prose-li:my-0.5
-                prose-ul:my-2 prose-ol:my-2
-                prose-hr:border-border/40 prose-hr:my-4">
-                <ReactMarkdown remarkPlugins={[remarkGfm]}>{campaign.beneficiary_story}</ReactMarkdown>
-              </div>
+              <ExpandableText>
+                <div className="prose prose-sm max-w-none dark:prose-invert
+                  prose-p:text-muted-foreground prose-p:leading-relaxed prose-p:my-2 prose-p:text-sm prose-p:italic
+                  prose-strong:text-foreground prose-strong:font-semibold
+                  prose-headings:font-semibold prose-headings:text-foreground
+                  prose-li:text-muted-foreground prose-li:text-sm prose-li:my-0.5
+                  prose-ul:my-2 prose-ol:my-2
+                  prose-hr:border-border/40 prose-hr:my-4">
+                  <ReactMarkdown remarkPlugins={[remarkGfm]}>{campaign.beneficiary_story}</ReactMarkdown>
+                </div>
+              </ExpandableText>
             </CardContent>
           </Card>
         )}

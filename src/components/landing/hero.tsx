@@ -115,9 +115,6 @@ export function Hero() {
 
             {/* Image frame */}
             <div className="relative w-full rounded-[1.75rem] overflow-hidden shadow-[0_32px_80px_-20px_rgba(0,0,0,0.16)] border border-primary/10">
-              {/* Left-edge gradient — image melts into page bg */}
-              <div className="absolute inset-y-0 left-0 w-20 z-10 bg-gradient-to-r from-background to-transparent pointer-events-none" />
-
               <Image
                 src="/hero-mosque.png"
                 alt="Komunitas masjid menggunakan Sadaqo untuk kampanye donasi"

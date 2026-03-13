@@ -70,13 +70,28 @@ export function shareViaWhatsApp(
   target: number
 ) {
   const progress = calculateProgress(collected, target);
-  const message = encodeURIComponent(
-    `🕌 *${campaignTitle}*\n\n` +
-      `Alhamdulillah, sudah ${progress}% tercapai!\n` +
-      `Terkumpul ${formatRupiah(collected)} dari target ${formatRupiah(target)}.\n\n` +
-      `Setiap donasi tercatat transparan — cek langsung di sini 👇\n` +
-      `${campaignUrl}\n\n` +
-      `Jazakallahu khairan 🤲`
-  );
-  window.open(`https://wa.me/?text=${message}`, '_blank');
+  
+  // If campaign is completed (100% or more), show achievement message
+  if (progress >= 100) {
+    const message = encodeURIComponent(
+      `🕌 *${campaignTitle}*\n\n` +
+        `Alhamdulillah, target tercapai! 🎉\n` +
+        `Terkumpul ${formatRupiah(collected)} dari target ${formatRupiah(target)}.\n\n` +
+        `Setiap donasi tercatat transparan — cek langsung di sini 👇\n` +
+        `${campaignUrl}\n\n` +
+        `Jazakallahu khairan 🤲`
+    );
+    window.open(`https://wa.me/?text=${message}`, '_blank');
+  } else {
+    // Otherwise, use initial campaign announcement format
+    const message = encodeURIComponent(
+      `Assalamu'alaikum warahmatullahi wabarakatuh 🤲\n\n` +
+        `Kami membuka kampanye *${campaignTitle}* melalui Sadaqo.\n\n` +
+        `✅ Setiap donasi tercatat transparan\n` +
+        `✅ Bisa dipantau kapan saja\n\n` +
+        `Yuk berdonasi di sini 👇\n${campaignUrl}\n\n` +
+        `Jazakallahu khairan — mohon disebarkan 🙏`
+    );
+    window.open(`https://wa.me/?text=${message}`, '_blank');
+  }
 }

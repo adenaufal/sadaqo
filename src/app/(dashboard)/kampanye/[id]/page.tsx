@@ -90,27 +90,29 @@ export default async function CampaignDetailPage({
             </Badge>
           </div>
         </div>
-        <div className="flex gap-2 shrink-0">
-          <Button asChild variant="outline" size="sm">
-            <Link href={`/kampanye/${campaign.id}/edit`}>
-              <Pencil className="w-4 h-4 mr-1" />
-              Edit
-            </Link>
-          </Button>
-          <Button asChild variant="outline" size="sm">
-            <Link href={`/campaign/${campaign.slug}`} target="_blank">
-              <ExternalLink className="w-4 h-4 mr-1" />
-              Lihat
-            </Link>
-          </Button>
-          <ShareButton
-            campaignTitle={campaign.title}
-            campaignUrl={campaignUrl}
-            collected={campaign.collected_amount || 0}
-            target={campaign.target_amount}
-          />
-          <DeleteCampaignButton campaignId={campaign.id} />
-        </div>
+      </div>
+
+      {/* Action buttons - separate row for better mobile layout */}
+      <div className="flex flex-wrap gap-2">
+        <Button asChild variant="outline" size="sm">
+          <Link href={`/kampanye/${campaign.id}/edit`}>
+            <Pencil className="w-4 h-4 mr-1" />
+            Edit
+          </Link>
+        </Button>
+        <Button asChild variant="outline" size="sm">
+          <Link href={`/campaign/${campaign.slug}`} target="_blank">
+            <ExternalLink className="w-4 h-4 mr-1" />
+            Lihat
+          </Link>
+        </Button>
+        <ShareButton
+          campaignTitle={campaign.title}
+          campaignUrl={campaignUrl}
+          collected={campaign.collected_amount || 0}
+          target={campaign.target_amount}
+        />
+        <DeleteCampaignButton campaignId={campaign.id} />
       </div>
 
       {/* Stats */}
