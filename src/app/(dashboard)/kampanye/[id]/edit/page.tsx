@@ -50,17 +50,18 @@ export default function EditKampanyePage() {
 
       if (error || !data) { router.push('/kampanye'); return; }
 
+      const d = data as any;
       setForm({
-        title: data.title,
-        campaign_type: data.campaign_type,
-        target_amount: String(data.target_amount),
-        description: data.description || '',
-        beneficiary_story: (data as any).beneficiary_story || '',
-        cover_image_url: data.cover_image_url || '',
-        end_date: data.end_date ? data.end_date.slice(0, 10) : '',
-        is_active: data.is_active ?? true,
+        title: d.title,
+        campaign_type: d.campaign_type,
+        target_amount: String(d.target_amount),
+        description: d.description || '',
+        beneficiary_story: d.beneficiary_story || '',
+        cover_image_url: d.cover_image_url || '',
+        end_date: d.end_date ? d.end_date.slice(0, 10) : '',
+        is_active: d.is_active ?? true,
       });
-      if (data.cover_image_url) setImagePreview(data.cover_image_url);
+      if (d.cover_image_url) setImagePreview(d.cover_image_url);
       setFetching(false);
     };
     fetchCampaign();
