@@ -1,5 +1,5 @@
 <div align="center">
-  <img width="1200" height="475" alt="Sadaqo Banner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+  <img width="1200" height="475" alt="Sadaqo Banner" src="./sadaqo-banner.png" />
 
   <h1>Sadaqo</h1>
   <p><strong>Platform pengelolaan zakat & donasi untuk masjid dan komunitas Muslim Indonesia</strong></p>
